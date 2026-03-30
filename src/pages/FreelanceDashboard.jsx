@@ -96,69 +96,69 @@ export const FreelanceDashboard = ({ onLogout }) => {
 
   return (
     <div className="min-h-screen bg-[#F0F2F5] flex flex-col md:flex-row font-sans relative">
-      <aside className="w-full md:w-80 bg-white border-b-[4px] md:border-b-0 md:border-r-[4px] border-black p-8 flex flex-col space-y-12 shrink-0 overflow-y-auto">
+      <aside className="w-full md:w-80 bg-white border-b-[1.5px] md:border-b-0 md:border-r-[1.5px] border-gray-200 p-8 flex flex-col space-y-10 shrink-0 overflow-y-auto">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-white border-[3px] border-black rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
-            <img src="/synapse_logo.png" alt="Synapse" className="w-full h-full object-contain p-1" />
+          <div className="w-10 h-10 bg-white border-[1.5px] border-gray-200 rounded-xl flex items-center justify-center shadow-sm overflow-hidden">
+            <img src="/synapse_logo.png" alt="Synapse" className="w-full h-full object-contain p-1.5" />
           </div>
-          <span className="font-black text-2xl tracking-tighter">SYNAPSE</span>
+          <span className="font-bold text-xl tracking-tight text-gray-900">SYNAPSE</span>
         </div>
 
-        <nav className="flex-1 space-y-4 font-black uppercase italic text-sm">
-           <button onClick={() => setActiveTab('home')} className={`flex items-center gap-5 w-full p-4 border-[3px] border-transparent rounded-[25px] transition-all ${activeTab === 'home' ? 'bg-[#CE93D8] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]' : 'hover:bg-gray-50 hover:border-black'}`}><LayoutDashboard size={20} /> Accueil</button>
-           <button onClick={() => setActiveTab('messagerie')} className={`flex items-center gap-5 w-full p-4 border-[3px] border-transparent rounded-[25px] transition-all ${activeTab === 'messagerie' ? 'bg-[#CE93D8] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]' : 'hover:bg-gray-50 hover:border-black'}`}><Inbox size={20} /> Messagerie</button>
-           <button onClick={() => setActiveTab('finance')} className={`flex items-center gap-5 w-full p-4 border-[3px] border-transparent rounded-[25px] transition-all ${activeTab === 'finance' ? 'bg-[#CE93D8] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]' : 'hover:bg-gray-50 hover:border-black'}`}><Wallet size={20} /> Finance</button>
-           <button onClick={() => setActiveTab('missions')} className={`flex items-center gap-5 w-full p-4 border-[3px] border-transparent rounded-[25px] transition-all ${activeTab === 'missions' ? 'bg-[#CE93D8] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]' : 'hover:bg-gray-50 hover:border-black'}`}><CheckCircle size={20} /> Mes Missions</button>
-           <button onClick={() => setActiveTab('reseau')} className={`flex items-center gap-5 w-full p-4 border-[3px] border-transparent rounded-[25px] transition-all ${activeTab === 'reseau' ? 'bg-[#CE93D8] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]' : 'hover:bg-gray-50 hover:border-black'}`}><Target size={20} /> Réseau Synapse</button>
+        <nav className="flex-1 space-y-2 font-semibold text-sm">
+           <button onClick={() => setActiveTab('home')} className={`flex items-center gap-4 w-full p-4 rounded-2xl transition-all ${activeTab === 'home' ? 'bg-purple-50 text-purple-700' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}><LayoutDashboard size={20} /> Accueil</button>
+           <button onClick={() => setActiveTab('messagerie')} className={`flex items-center gap-4 w-full p-4 rounded-2xl transition-all ${activeTab === 'messagerie' ? 'bg-purple-50 text-purple-700' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}><Inbox size={20} /> Messagerie</button>
+           <button onClick={() => setActiveTab('finance')} className={`flex items-center gap-4 w-full p-4 rounded-2xl transition-all ${activeTab === 'finance' ? 'bg-purple-50 text-purple-700' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}><Wallet size={20} /> Finance</button>
+           <button onClick={() => setActiveTab('missions')} className={`flex items-center gap-4 w-full p-4 rounded-2xl transition-all ${activeTab === 'missions' ? 'bg-purple-50 text-purple-700' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}><CheckCircle size={20} /> Mes Missions</button>
+           <button onClick={() => setActiveTab('reseau')} className={`flex items-center gap-4 w-full p-4 rounded-2xl transition-all ${activeTab === 'reseau' ? 'bg-purple-50 text-purple-700' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'}`}><Target size={20} /> Réseau Synapse</button>
            
-           <div className="h-px bg-black opacity-10 my-4" />
-           <button onClick={onLogout} className="flex items-center gap-5 w-full p-4 hover:bg-red-50 text-red-500 border-[3px] border-transparent hover:border-red-500 rounded-[25px] transition-all"><LogOut size={20} /> Déconnexion</button>
+           <div className="h-px bg-gray-200 my-4" />
+           <button onClick={onLogout} className="flex items-center justify-center gap-2 w-full p-4 hover:bg-red-50 text-red-600 rounded-2xl transition-all"><LogOut size={18} /> Déconnexion</button>
         </nav>
 
-        <div className="pt-8 border-t-[3px] border-black space-y-6">
-           <div className="p-5 bg-white border-[3px] border-black rounded-[30px] flex flex-col gap-4">
-             <div className="flex items-center gap-4">
-               <div className="font-black text-sm uppercase tracking-widest flex-1">Statut:</div>
-               <button onClick={() => setIsAvailable(!isAvailable)} className={`relative w-16 h-8 rounded-full border-[3px] border-black transition-colors ${isAvailable ? 'bg-green-400' : 'bg-red-400'} flex items-center px-1`}>
-                  <div className={`w-5 h-5 bg-white border-[2px] border-black rounded-full transition-transform ${isAvailable ? 'translate-x-8' : 'translate-x-0'}`}></div>
+        <div className="pt-8 border-t-[1.5px] border-gray-100 space-y-4">
+           <div className="p-5 bg-gray-50 border-[1.5px] border-gray-200 rounded-2xl flex flex-col gap-4">
+             <div className="flex items-center justify-between gap-4">
+               <div className="font-semibold text-sm text-gray-700 flex-1">Statut:</div>
+               <button onClick={() => setIsAvailable(!isAvailable)} className={`relative w-12 h-6 rounded-full transition-colors ${isAvailable ? 'bg-green-500' : 'bg-gray-300'} flex items-center px-1`}>
+                  <div className={`w-4 h-4 bg-white rounded-full shadow-sm transition-transform ${isAvailable ? 'translate-x-6' : 'translate-x-0'}`}></div>
                </button>
              </div>
-             <p className="text-[10px] font-bold text-gray-500 uppercase text-center">{isAvailable ? 'Disponible pour missions' : 'Actuellement Indisponible'}</p>
+             <p className="text-[11px] font-medium text-gray-500 text-center bg-white py-1.5 rounded-lg border-[1.5px] border-gray-100">{isAvailable ? 'Disponible pour missions' : 'Actuellement Indisponible'}</p>
            </div>
         </div>
       </aside>
 
       {/* Apporteur Profile Modal */}
       {selectedApporteur && (
-         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 animate-in fade-in duration-300">
-           <div className="max-w-2xl w-full">
-             <SoftCard title="Profil de l'Apporteur" className="relative shadow-[15px_15px_0px_0px_rgba(0,0,0,1)] border-[4px]">
+         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/40 backdrop-blur-sm animate-in fade-in duration-300">
+           <div className="max-w-2xl w-full animate-in zoom-in-95 duration-300">
+             <SoftCard title="Profil du Représentant" className="relative shadow-2xl border-[1.5px] border-gray-200">
                <button 
                  onClick={() => setSelectedApporteur(null)}
-                 className="absolute top-8 right-8 w-12 h-12 border-[3px] border-black rounded-full flex items-center justify-center bg-white hover:bg-red-50 hover:text-red-500 transition-colors"
+                 className="absolute top-6 right-6 w-10 h-10 border-[1.5px] border-gray-200 rounded-full flex items-center justify-center bg-white hover:bg-red-50 hover:text-red-500 hover:border-red-200 transition-colors"
                >
-                 <X size={24} strokeWidth={3} />
+                 <X size={20} strokeWidth={2} />
                </button>
                
                <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
-                 <div className="w-24 h-24 border-[3px] border-black rounded-2xl bg-[#FFEB3B] flex items-center justify-center overflow-hidden shrink-0">
+                 <div className="w-24 h-24 border-[1.5px] border-gray-200 rounded-2xl bg-yellow-50 flex items-center justify-center overflow-hidden shrink-0 shadow-sm">
                     <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${selectedApporteur.avatar}`} alt="Avatar" className="w-full h-full object-cover" />
                  </div>
                  <div className="text-center md:text-left">
-                   <h3 className="text-4xl font-black uppercase italic">{selectedApporteur.name}</h3>
-                   <p className="font-bold text-gray-500 uppercase tracking-widest">{selectedApporteur.role}</p>
-                   <p className="font-black text-yellow-500 text-xl flex items-center gap-2 justify-center md:justify-start mt-2"><Star fill="currentColor" size={20} /> {selectedApporteur.rating}/5 Avis</p>
+                   <h3 className="text-3xl font-bold text-gray-900">{selectedApporteur.name}</h3>
+                   <p className="font-semibold text-blue-600 text-sm tracking-wide mt-1">{selectedApporteur.role}</p>
+                   <p className="font-bold text-yellow-500 text-lg flex items-center gap-2 justify-center md:justify-start mt-2"><Star fill="currentColor" size={20} /> {selectedApporteur.rating}/5 Avis</p>
                  </div>
                </div>
-               <div className="bg-[#FAFAFA] border-[3px] border-black p-6 rounded-[20px] mb-8 text-left">
-                 <p className="font-bold text-lg italic tracking-tight">"{selectedApporteur.bio}"</p>
+               <div className="bg-gray-50 border-[1.5px] border-gray-200 p-6 rounded-2xl mb-8 text-left">
+                 <p className="font-medium text-gray-700 italic">"{selectedApporteur.bio}"</p>
                </div>
                <div className="grid grid-cols-2 gap-4 mb-8">
-                 <SoftBadge color="blue" className="text-center">Clients: {selectedApporteur.clients}</SoftBadge>
-                 <SoftBadge color="purple" className="text-center">{selectedApporteur.pipelineSize}</SoftBadge>
+                 <SoftBadge color="blue" className="text-center font-semibold bg-blue-50 text-blue-700 border-blue-200">Clients: {selectedApporteur.clients}</SoftBadge>
+                 <SoftBadge color="purple" className="text-center font-semibold bg-purple-50 text-purple-700 border-purple-200">{selectedApporteur.pipelineSize}</SoftBadge>
                </div>
                
-               <SoftButton variant="yellow" className="w-full text-xl py-6 tracking-tighter shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]" onClick={() => {
+               <SoftButton variant="yellow" className="w-full text-lg py-4 shadow-sm border-yellow-300" onClick={() => {
                  const newConversation = {
                     id: `dm_${Date.now()}`,
                     type: 'dm_demande',
@@ -176,31 +176,31 @@ export const FreelanceDashboard = ({ onLogout }) => {
                  setActiveTab('messagerie');
                  showAlert(`📨 Demande envoyée ! L'apporteur ${selectedApporteur.name} vient d'être contacté.`, "success");
                  setSelectedApporteur(null);
-               }}><Send size={20} className="inline mr-2" /> Demander une représentation (DM)</SoftButton>
+               }}><Send size={18} className="inline mr-2" /> Demander une représentation (DM)</SoftButton>
              </SoftCard>
            </div>
          </div>
       )}
 
       {reviewModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 animate-in fade-in duration-300">
-          <div className="max-w-xl w-full animate-in zoom-in duration-300">
-            <SoftCard title={`Évaluer l'Apporteur : ${reviewModal.agent}`} color="purple" className="relative shadow-[15px_15px_0px_0px_rgba(0,0,0,1)] border-[4px]">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/40 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="max-w-xl w-full animate-in zoom-in-95 duration-300">
+            <SoftCard title={`Évaluer l'Apporteur : ${reviewModal.agent}`} color="purple" className="relative shadow-2xl border-[1.5px] border-gray-200">
               <div className="space-y-6">
-                 <p className="font-bold text-gray-700">Félicitations pour cette mission terminée ! Partagez votre avis sur l'accompagnement de cet Apporteur d'Affaires.</p>
+                 <p className="font-medium text-gray-700">Félicitations pour cette mission terminée ! Partagez votre avis sur l'accompagnement de cet Apporteur d'Affaires.</p>
                  <div className="space-y-2">
-                   <div className="flex gap-2 text-yellow-500 justify-center mb-4">
+                   <div className="flex gap-3 text-yellow-400 justify-center mb-4">
                      {[1,2,3,4,5].map(star => (
-                        <Star key={`rev_star_${star}`} fill={star <= reviewModal.rating ? 'currentColor' : 'none'} className="cursor-pointer hover:scale-110 transition-transform" onClick={() => setReviewModal({...reviewModal, rating: star})} size={48} />
+                        <Star key={`rev_star_${star}`} fill={star <= reviewModal.rating ? 'currentColor' : 'none'} className="cursor-pointer hover:scale-110 transition-transform" onClick={() => setReviewModal({...reviewModal, rating: star})} size={40} />
                      ))}
                    </div>
                  </div>
                  <div className="space-y-2">
-                   <textarea rows={3} value={reviewModal.comment} onChange={(e) => setReviewModal({...reviewModal, comment: e.target.value})} className="w-full border-[3px] border-black rounded-[20px] p-4 font-bold text-lg resize-none placeholder:font-normal" placeholder="Excellent suivi commercial, TJM respecté..." />
+                   <textarea rows={3} value={reviewModal.comment} onChange={(e) => setReviewModal({...reviewModal, comment: e.target.value})} className="w-full border-[1.5px] border-gray-200 rounded-xl p-4 font-medium text-gray-900 resize-none focus:outline-none focus:border-purple-500 focus:ring-2 ring-purple-50 transition-all placeholder:text-gray-400" placeholder="Excellent suivi commercial, TJM respecté..." />
                  </div>
-                 <div className="flex gap-4 pt-4">
-                    <SoftButton variant="white" className="flex-1" onClick={() => setReviewModal(null)}>Ignorer</SoftButton>
-                    <SoftButton variant="black" className="flex-1" onClick={() => {
+                 <div className="flex gap-3 pt-6 border-t-[1.5px] border-gray-100">
+                    <SoftButton variant="white" className="flex-1 shadow-sm rounded-xl py-3" onClick={() => setReviewModal(null)}>Ignorer</SoftButton>
+                    <SoftButton variant="purple" className="flex-1 shadow-sm rounded-xl py-3 border-purple-300" onClick={() => {
                         setTasks(tasks.map(t => t.id === reviewModal.id ? {...t, hasReviewedApporteur: true} : t));
                         setReviewModal(null);
                         showAlert("✅ Merci ! Votre avis public a été ajouté au profil de l'Apporteur.", "success");
@@ -216,34 +216,34 @@ export const FreelanceDashboard = ({ onLogout }) => {
         <div className="max-w-5xl mx-auto space-y-12 pb-24">
            {activeTab === 'home' && (
              <div className="space-y-12 animate-in slide-in-from-right-10 duration-500">
-               <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 border-b-[6px] border-black pb-12 relative">
+               <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10 border-b-[1.5px] border-gray-200 pb-12 relative">
                  <div className="space-y-2">
-                   <h2 className="text-6xl md:text-7xl font-black uppercase italic tracking-tighter leading-none">Hello, <span className="text-[#CE93D8] underline decoration-8">{user?.firstName || 'Paul'}</span> !</h2>
-                   <p className="font-bold text-gray-500 uppercase text-sm tracking-widest italic mt-4">Freelance Expert • Profil complété à 100%</p>
+                   <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-none">Hello, <span className="text-purple-600 decoration-purple-300 underline decoration-4 underline-offset-4">{user?.firstName || 'Paul'}</span> !</h2>
+                   <p className="font-semibold text-gray-500 uppercase text-[11px] tracking-wide mt-4">Freelance Expert • Profil complété à 100%</p>
                  </div>
                </div>
 
                {invitations.length > 0 && (
                  <div className="space-y-6">
-                   <h3 className="font-black text-2xl uppercase italic tracking-tighter flex items-center gap-3">
-                     <span className="w-4 h-4 rounded-full bg-red-500 animate-pulse border-[2px] border-black" />
+                   <h3 className="font-bold text-xl text-gray-900 flex items-center gap-3">
+                     <span className="w-3 h-3 rounded-full bg-red-500 animate-pulse border-[1.5px] border-red-200" />
                      Propositions de l'équipe Synapse ({invitations.length})
                    </h3>
                    {invitations.map(inv => (
-                     <div key={inv.id} className="bg-black text-white border-[4px] border-[#CE93D8] rounded-[40px] p-6 md:p-8 shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] relative overflow-hidden">
+                     <div key={inv.id} className="bg-gray-900 text-white border-[1.5px] border-purple-500/30 rounded-3xl p-6 md:p-8 shadow-md relative overflow-hidden">
                        <div className="flex flex-col xl:flex-row justify-between xl:items-center gap-6 xl:gap-8 relative z-10 w-full">
                          <div className="space-y-2 flex-1 min-w-0">
-                           <SoftBadge color="purple">Nouvelle Opportunité</SoftBadge>
-                           <h3 className="text-2xl md:text-3xl font-black uppercase italic mt-2 md:truncate whitespace-normal leading-tight">{inv.title}</h3>
-                           <p className="font-bold text-gray-300 tracking-widest uppercase text-xs truncate">Apporteur : {inv.agent} • Client : {inv.client}</p>
-                           <div className="flex items-center gap-4 pt-2">
-                             <span className="text-3xl font-black text-[#CE93D8]">{inv.budget}</span>
-                             <span className="text-xs font-bold text-gray-400 uppercase hidden sm:inline">TJM sécurisé sur Escrow</span>
+                           <SoftBadge color="purple" className="border-purple-400/50 bg-white/10 text-white backdrop-blur-sm">Nouvelle Opportunité</SoftBadge>
+                           <h3 className="text-2xl md:text-3xl font-bold mt-3 md:truncate whitespace-normal leading-tight text-white">{inv.title}</h3>
+                           <p className="font-medium text-gray-400 text-sm truncate mt-1">Apporteur : {inv.agent} • Client : {inv.client}</p>
+                           <div className="flex items-center gap-4 pt-3">
+                             <span className="text-3xl font-bold text-purple-300">{inv.budget}</span>
+                             <span className="text-xs font-semibold text-gray-400 uppercase hidden sm:inline px-3 py-1 bg-white/5 rounded-full backdrop-blur-md">TJM sécurisé sur Escrow</span>
                            </div>
                          </div>
-                         <div className="flex flex-col sm:flex-row gap-4 w-full xl:w-auto shrink-0 mt-2 xl:mt-0">
-                           <SoftButton variant="white" className="flex-1 sm:flex-none py-4 px-6 text-black text-sm" onClick={() => handleDeclineContract(inv.id)}>Décliner</SoftButton>
-                           <SoftButton variant="purple" className="flex-1 sm:flex-none py-4 px-6 text-sm shadow-[4px_4px_0px_0px_#AB47BC] text-black border-white" onClick={() => handleAcceptContract(inv.id)}><Check size={16} className="inline mr-2 shrink-0" /> <span className="truncate">Accepter & Sécuriser</span></SoftButton>
+                         <div className="flex flex-col sm:flex-row gap-3 w-full xl:w-auto shrink-0 mt-4 xl:mt-0">
+                           <SoftButton variant="white" className="flex-1 sm:flex-none py-3.5 px-6 text-gray-900 font-semibold" onClick={() => handleDeclineContract(inv.id)}>Décliner</SoftButton>
+                           <SoftButton variant="purple" className="flex-1 sm:flex-none py-3.5 px-6 shadow-sm border-purple-400" onClick={() => handleAcceptContract(inv.id)}><Check size={16} className="inline mr-2 shrink-0" /> <span className="truncate">Accepter & Sécuriser</span></SoftButton>
                          </div>
                        </div>
                      </div>
@@ -251,48 +251,48 @@ export const FreelanceDashboard = ({ onLogout }) => {
                  </div>
                )}
 
-               <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                 <SoftCard title="Revenus Générés" color="yellow" icon={Wallet}>
-                   <p className="text-5xl font-black italic">14 200 €</p>
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                 <SoftCard title="Revenus Générés" color="yellow" icon={Wallet} className="bg-yellow-50/50 border-[1.5px] border-yellow-200">
+                   <p className="text-4xl font-bold text-gray-900">14 200 €</p>
                  </SoftCard>
-                 <SoftCard title="Sécurisé (Escrow)" color="green" icon={ShieldCheck}>
-                   <p className="text-5xl font-black italic">1 000 €</p>
-                   <p className="text-xs font-black uppercase mt-3 tracking-widest text-gray-600">Mission Active</p>
+                 <SoftCard title="Sécurisé (Escrow)" color="green" icon={ShieldCheck} className="bg-green-50/50 border-[1.5px] border-green-200">
+                   <p className="text-4xl font-bold text-gray-900">1 000 €</p>
+                   <p className="text-[10px] font-semibold uppercase mt-3 tracking-wide text-green-700 bg-green-100/50 inline-block px-2 py-1 rounded-md">Mission Active</p>
                  </SoftCard>
-                 <SoftCard title="Ma Note" color="purple" icon={Star}>
+                 <SoftCard title="Ma Note" color="purple" icon={Star} className="bg-purple-50/50 border-[1.5px] border-purple-200">
                    <div className="flex items-center gap-2">
-                     <p className="text-5xl font-black italic">4.9</p>
-                     <Star fill="currentColor" size={32} className="text-purple-600 mb-2"/>
+                     <p className="text-4xl font-bold text-gray-900">4.9</p>
+                     <Star fill="currentColor" size={28} className="text-purple-600 mb-1"/>
                    </div>
-                   <p className="text-xs font-black uppercase mt-3 tracking-widest text-gray-600">Basé sur 12 avis</p>
+                   <p className="text-[10px] font-semibold uppercase mt-3 tracking-wide text-purple-700 bg-purple-100/50 inline-block px-2 py-1 rounded-md">Basé sur 12 avis</p>
                  </SoftCard>
                </div>
 
                <div className="mt-16">
-                  <h4 className="text-2xl font-black uppercase italic border-b-[4px] border-black pb-4 mb-8">Mon Portfolio Synapse</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <SoftCard className="p-0 overflow-hidden group cursor-pointer hover:-translate-y-2 transition-transform">
-                      <div className="h-32 bg-[#FFEB3B] border-b-[3px] border-black flex items-center justify-center">
+                  <h4 className="text-xl font-bold text-gray-900 border-b-[1.5px] border-gray-200 pb-4 mb-8">Mon Portfolio Synapse</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <SoftCard className="p-0 overflow-hidden group cursor-pointer hover:-translate-y-1 transition-transform border-[1.5px] border-gray-200 hover:border-gray-300 hover:shadow-md">
+                      <div className="h-32 bg-yellow-50 border-b-[1.5px] border-gray-200 flex items-center justify-center">
                         <img src="https://api.dicebear.com/7.x/shapes/svg?seed=Ecommerce" alt="M" className="w-16 h-16 opacity-80" />
                       </div>
-                      <div className="p-4">
-                        <h5 className="font-black uppercase italic">Dashboard Admin</h5>
-                        <p className="text-xs font-bold text-gray-500">React • TailwindCSS</p>
+                      <div className="p-5">
+                        <h5 className="font-bold text-gray-900 text-lg mb-1">Dashboard Admin</h5>
+                        <p className="text-sm font-medium text-gray-500">React • TailwindCSS</p>
                       </div>
                     </SoftCard>
-                    <SoftCard className="p-0 overflow-hidden group cursor-pointer hover:-translate-y-2 transition-transform">
-                      <div className="h-32 bg-[#E3F2FD] border-b-[3px] border-black flex items-center justify-center">
+                    <SoftCard className="p-0 overflow-hidden group cursor-pointer hover:-translate-y-1 transition-transform border-[1.5px] border-gray-200 hover:border-gray-300 hover:shadow-md">
+                      <div className="h-32 bg-blue-50 border-b-[1.5px] border-gray-200 flex items-center justify-center">
                         <img src="https://api.dicebear.com/7.x/shapes/svg?seed=MobileApp" alt="M" className="w-16 h-16 opacity-80" />
                       </div>
-                      <div className="p-4">
-                        <h5 className="font-black uppercase italic">App Mobile Santé</h5>
-                        <p className="text-xs font-bold text-gray-500">React Native • Expo</p>
+                      <div className="p-5">
+                        <h5 className="font-bold text-gray-900 text-lg mb-1">App Mobile Santé</h5>
+                        <p className="text-sm font-medium text-gray-500">React Native • Expo</p>
                       </div>
                     </SoftCard>
-                    <SoftCard className="p-0 overflow-hidden flex items-center justify-center bg-gray-50 border-dashed border-[3px] hover:bg-white transition-colors cursor-pointer text-gray-400 hover:text-black">
+                    <SoftCard className="p-0 overflow-hidden flex items-center justify-center bg-gray-50 border-dashed border-[1.5px] border-gray-200 hover:bg-white transition-colors cursor-pointer text-gray-400 hover:text-gray-600 min-h-[190px]">
                        <div className="text-center">
-                         <Plus size={32} className="mx-auto mb-2" />
-                         <span className="font-black uppercase text-sm">Ajouter Projet</span>
+                         <Plus size={32} className="mx-auto mb-3" />
+                         <span className="font-semibold text-sm">Ajouter Projet</span>
                        </div>
                     </SoftCard>
                   </div>
@@ -302,28 +302,28 @@ export const FreelanceDashboard = ({ onLogout }) => {
 
            {activeTab === 'reseau' && (
              <div className="space-y-8 animate-in slide-in-from-right-10 duration-500">
-               <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 border-b-[6px] border-black pb-8">
+               <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 border-b-[1.5px] border-gray-200 pb-8">
                  <div className="space-y-2">
-                   <h3 className="text-5xl font-black uppercase italic tracking-tighter">Annuaire Apporteurs</h3>
-                   <p className="font-bold text-gray-500 uppercase tracking-widest text-sm">Trouvez un agent pour vous placer sur des missions d'exception.</p>
+                   <h3 className="text-3xl font-bold tracking-tight text-gray-900">Annuaire Apporteurs</h3>
+                   <p className="font-medium text-gray-500 text-sm">Trouvez un agent pour vous placer sur des missions d'exception.</p>
                  </div>
-                 <SoftButton variant="black" className="rounded-full px-8 py-3"><Search size={16} className="mr-2 inline" /> Filtrer</SoftButton>
+                 <SoftButton variant="black" className="rounded-xl px-6 py-2.5 shadow-sm"><Search size={16} className="mr-2 inline" /> Filtrer</SoftButton>
                </div>
                
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {apporteurs.map(ag => (
-                     <SoftCard key={ag.id} className="cursor-pointer hover:-translate-y-2 transition-transform group shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-[4px]" onClick={() => setSelectedApporteur(ag)}>
-                        <div className="flex gap-6 items-center mb-6 border-b-[3px] border-black pb-6">
-                           <div className="w-20 h-20 border-[3px] border-black rounded-[20px] bg-[#FFEB3B] overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] shrink-0">
+                     <SoftCard key={ag.id} className="cursor-pointer hover:-translate-y-1 transition-transform group hover:border-purple-200 hover:shadow-md border-[1.5px]" onClick={() => setSelectedApporteur(ag)}>
+                        <div className="flex gap-5 items-center mb-6 border-b-[1.5px] border-gray-100 pb-5">
+                           <div className="w-16 h-16 border-[1.5px] border-gray-200 rounded-2xl bg-yellow-50 overflow-hidden shrink-0 shadow-sm flex items-center justify-center">
                               <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${ag.avatar}`} className="w-full h-full object-cover" />
                            </div>
-                           <div className="overflow-hidden">
-                              <h4 className="font-black text-2xl uppercase italic group-hover:underline truncate">{ag.name}</h4>
-                              <p className="font-bold text-xs uppercase tracking-widest text-[#CE93D8]">{ag.role}</p>
+                           <div className="overflow-hidden flex-1">
+                              <h4 className="font-bold text-xl text-gray-900 group-hover:text-purple-700 transition-colors truncate">{ag.name}</h4>
+                              <p className="font-semibold text-xs text-purple-600 tracking-wide mt-1">{ag.role}</p>
                            </div>
                         </div>
-                        <p className="font-bold text-sm text-gray-600 line-clamp-3 mb-6 bg-gray-50 p-4 rounded-xl border-[2px] border-black border-dashed">"{ag.bio}"</p>
-                        <SoftButton variant="white" className="w-full text-sm shadow-none hover:bg-black hover:text-white border-[3px] transition-colors"><Star size={16} fill="currentColor" className="text-yellow-500 mr-2 inline" /> {ag.rating}/5 • Voir Profil</SoftButton>
+                        <p className="font-medium text-sm text-gray-600 line-clamp-3 mb-6 bg-gray-50 p-4 rounded-xl border-[1.5px] border-gray-100 italic">"{ag.bio}"</p>
+                        <SoftButton variant="white" className="w-full text-sm shadow-sm hover:bg-gray-50 transition-colors border-[1.5px]"><Star size={16} fill="currentColor" className="text-yellow-500 mr-2 inline" /> {ag.rating}/5 • Voir Profil</SoftButton>
                      </SoftCard>
                   ))}
                </div>
@@ -331,84 +331,90 @@ export const FreelanceDashboard = ({ onLogout }) => {
            )}
 
            {activeTab === 'messagerie' && (
-             <div className="flex flex-col md:flex-row gap-8 animate-in fade-in duration-300">
-                <div className="w-full md:w-1/3 flex flex-col gap-8">
+             <div className="flex flex-col md:flex-row gap-8 animate-in fade-in duration-300 h-full">
+                <div className="w-full md:w-1/3 flex flex-col gap-6">
                   
-                  <div className="space-y-4">
-                    <h4 className="font-black uppercase text-sm border-b-[3px] border-black pb-2 text-orange-600">⏳ Demandes Envoyées</h4>
+                  <div className="space-y-3">
+                    <h4 className="font-semibold text-sm border-b-[1.5px] border-gray-200 pb-2 text-orange-600">⏳ Demandes Envoyées</h4>
                     {inbox.filter(chat => chat.type === 'dm_demande').length > 0 ? inbox.filter(chat => chat.type === 'dm_demande').map(chat => (
-                      <div key={chat.id} onClick={() => setActiveChat(chat)} className={`p-4 border-[3px] border-black rounded-[20px] cursor-pointer transition-all ${activeChat?.id === chat.id ? 'bg-[#CE93D8] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]' : 'bg-[#FFF3E0] hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'}`}>
+                      <div key={chat.id} onClick={() => setActiveChat(chat)} className={`p-4 border-[1.5px] border-gray-200 rounded-2xl cursor-pointer transition-all ${activeChat?.id === chat.id ? 'bg-orange-50 border-orange-200 shadow-sm' : 'bg-white hover:border-orange-200 hover:shadow-sm'}`}>
                         <div className="flex justify-between items-start mb-2">
-                          <span className="font-black uppercase text-sm">{chat.sender}</span>
+                           <span className="font-bold text-gray-900 text-sm truncate">{chat.sender}</span>
                         </div>
-                        <p className="text-[10px] font-black text-gray-700 uppercase tracking-widest mb-1">En attente de réponse</p>
+                        <p className="text-[10px] font-semibold text-orange-600 uppercase tracking-wide">En attente de réponse</p>
                       </div>
-                    )) : <p className="text-[10px] font-black uppercase text-gray-400 italic">Aucune demande en attente.</p>}
+                    )) : <p className="text-xs font-medium text-gray-400 italic">Aucune demande en attente.</p>}
                   </div>
 
-                  <div className="space-y-4">
-                    <h4 className="font-black uppercase text-sm border-b-[3px] border-black pb-2 text-purple-600">🤝 Mes Représentants (Apporteurs)</h4>
+                  <div className="space-y-3">
+                    <h4 className="font-semibold text-sm border-b-[1.5px] border-gray-200 pb-2 text-purple-600">🤝 Mes Représentants (Apporteurs)</h4>
                     {inbox.filter(chat => chat.type === 'dm').length > 0 ? inbox.filter(chat => chat.type === 'dm').map(chat => (
-                      <div key={chat.id} onClick={() => setActiveChat(chat)} className={`p-4 border-[3px] border-black rounded-[20px] cursor-pointer transition-all ${activeChat?.id === chat.id ? 'bg-[#CE93D8] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]' : 'bg-[#FFF9C4] hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'}`}>
-                        <div className="flex justify-between items-start mb-2">
-                          <span className="font-black uppercase text-sm">{chat.sender}</span>
+                      <div key={chat.id} onClick={() => setActiveChat(chat)} className={`p-4 border-[1.5px] border-gray-200 rounded-2xl cursor-pointer transition-all ${activeChat?.id === chat.id ? 'bg-purple-50 border-purple-200 shadow-sm' : 'bg-white hover:border-purple-200 hover:shadow-sm'}`}>
+                        <div className="flex justify-between items-start mb-1">
+                           <span className="font-bold text-gray-900 text-sm">{chat.sender}</span>
                         </div>
-                        <p className="text-[10px] font-black text-gray-700 uppercase tracking-widest mb-1">{chat.role}</p>
-                        <p className="text-xs font-bold truncate italic opacity-80">{chat.title}</p>
+                        <p className="text-[10px] font-semibold text-purple-600 uppercase tracking-wide mb-1">{chat.role}</p>
+                        <p className="text-xs font-medium text-gray-500 truncate">{chat.title}</p>
                       </div>
-                    )) : <p className="text-[10px] font-black uppercase text-gray-400 italic">Aucun représentant actif.</p>}
+                    )) : <p className="text-xs font-medium text-gray-400 italic">Aucun représentant actif.</p>}
                   </div>
 
-                  <div className="space-y-4">
-                    <h4 className="font-black uppercase text-sm border-b-[3px] border-black pb-2 text-green-600">🛠 Groupes Projets Actifs</h4>
+                  <div className="space-y-3">
+                    <h4 className="font-semibold text-sm border-b-[1.5px] border-gray-200 pb-2 text-green-600">🛠 Groupes Projets Actifs</h4>
                     {inbox.filter(chat => chat.type === 'project').length > 0 ? inbox.filter(chat => chat.type === 'project').map(chat => (
-                      <div key={chat.id} onClick={() => setActiveChat(chat)} className={`p-4 border-[3px] border-black rounded-[20px] cursor-pointer transition-all ${activeChat?.id === chat.id ? 'bg-[#CE93D8] shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]' : 'bg-white hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]'}`}>
-                        <div className="flex justify-between items-start mb-2">
-                          <span className="font-black uppercase text-sm">{chat.title}</span>
+                      <div key={chat.id} onClick={() => setActiveChat(chat)} className={`p-4 border-[1.5px] border-gray-200 rounded-2xl cursor-pointer transition-all ${activeChat?.id === chat.id ? 'bg-green-50 border-green-200 shadow-sm' : 'bg-white hover:border-green-200 hover:shadow-sm'}`}>
+                        <div className="flex justify-between items-start mb-1">
+                          <span className="font-bold text-gray-900 text-sm">{chat.title}</span>
                         </div>
-                        <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">{chat.sender}</p>
+                        <p className="text-[10px] font-semibold text-green-600 uppercase tracking-wide">{chat.sender}</p>
                       </div>
-                    )) : <p className="text-xs font-bold text-gray-400 italic">Aucun projet en cours.</p>}
+                    )) : <p className="text-xs font-medium text-gray-400 italic">Aucun projet en cours.</p>}
                   </div>
 
                 </div>
 
-                <div className="w-full md:w-2/3">
+                <div className="w-full md:w-2/3 h-[600px] xl:h-[700px] flex flex-col">
                   {!activeChat ? (
-                    <SoftCard className="h-[600px] flex items-center justify-center text-center">
-                       <MessageSquare size={64} className="mx-auto mb-6 text-gray-300" />
-                       <p className="font-black text-2xl uppercase italic text-gray-400">Sélectionnez une discussion</p>
+                    <SoftCard className="flex-1 flex flex-col items-center justify-center text-center border-[1.5px]">
+                       <div className="w-16 h-16 bg-gray-50 text-gray-300 rounded-full flex items-center justify-center mb-4">
+                          <MessageSquare size={32} />
+                       </div>
+                       <p className="font-semibold text-lg text-gray-400">Sélectionnez une discussion</p>
                     </SoftCard>
                   ) : (
-                    <div className="bg-white border-[4px] border-black rounded-[40px] shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] overflow-hidden flex flex-col h-[600px]">
-                       <header className="bg-black text-white p-6 flex justify-between items-center z-10">
+                    <div className="bg-white border-[1.5px] border-gray-200 rounded-3xl shadow-sm overflow-hidden flex flex-col h-full">
+                       <header className="bg-white border-b-[1.5px] border-gray-200 px-6 py-4 flex justify-between items-center z-10 shrink-0">
                          <div>
-                           <h3 className="text-2xl font-black uppercase italic truncate">{activeChat.title}</h3>
-                           <p className="font-bold text-gray-400 truncate w-full text-sm">Avec {activeChat.sender} ({activeChat.role})</p>
+                           <h3 className="text-xl font-bold text-gray-900 truncate">{activeChat.title}</h3>
+                           <p className="font-medium text-gray-500 truncate text-sm mt-0.5">Avec {activeChat.sender} ({activeChat.role})</p>
                          </div>
                        </header>
-                       <div className="bg-[#F3E5F5] p-3 text-center border-b-[3px] border-black font-black uppercase text-xs italic tracking-widest text-[#6A1B9A]">
+                       <div className="bg-purple-50/50 py-2.5 text-center border-b-[1.5px] border-purple-100 font-medium text-xs text-purple-700 shrink-0">
                          Espace sécurisé Synapse
                        </div>
-                       <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50 relative">
+                       <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gray-50/50 relative">
                          {activeChat.messages.map((msg, idx) => (
-                           <div key={idx} className={`max-w-[80%] ${msg.sender === 'Paul' || msg.sender === 'Moi' ? 'ml-auto' : ''}`}>
-                             <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 px-2">{msg.sender} • {msg.time}</p>
-                             <div className={`p-5 rounded-[20px] font-bold border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-lg ${msg.sender === 'Paul' || msg.sender === 'Moi' ? 'bg-[#CE93D8]' : 'bg-white'}`}>
+                           <div key={idx} className={`max-w-[85%] md:max-w-[75%] ${msg.sender === 'Paul' || msg.sender === 'Moi' ? 'ml-auto' : ''}`}>
+                             <p className={`text-[10px] font-semibold uppercase tracking-wide mb-1.5 px-2 ${msg.sender === 'Paul' || msg.sender === 'Moi' ? 'text-right text-gray-400' : 'text-gray-400'}`}>{msg.sender === 'Moi' ? 'Vous' : msg.sender} • {msg.time}</p>
+                             <div className={`p-4 rounded-2xl font-medium shadow-sm text-sm leading-relaxed ${msg.sender === 'Paul' || msg.sender === 'Moi' ? 'bg-purple-600 text-white rounded-br-sm' : 'bg-white border-[1.5px] border-gray-200 text-gray-800 rounded-bl-sm'}`}>
                                {msg.text}
                              </div>
                            </div>
                          ))}
                        </div>
-                       <div className="p-6 bg-white border-t-[4px] border-black flex gap-4 items-center">
-                         <input type="text" value={chatInput} onChange={(e) => setChatInput(e.target.value)} placeholder="Écrivez votre message..." className="flex-1 bg-gray-50 border-[3px] border-black rounded-[20px] px-6 py-4 font-bold focus:outline-none focus:bg-white transition-colors text-lg" />
-                         <SoftButton variant="black" className="p-4" onClick={() => {
+                       <div className="p-5 bg-white border-t-[1.5px] border-gray-200 flex gap-3 items-center shrink-0">
+                         <input type="text" value={chatInput} onChange={(e) => setChatInput(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter' && chatInput.trim()) {
+                             const newMsg = { text: chatInput, sender: 'Moi', time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'}) };
+                             setActiveChat({...activeChat, messages: [...activeChat.messages, newMsg]});
+                             setChatInput('');
+                           } }} placeholder="Écrire un message..." className="flex-1 bg-gray-50 border-[1.5px] border-gray-200 rounded-xl px-5 py-3.5 font-medium placeholder:text-gray-400 focus:outline-none focus:bg-white focus:border-purple-500 focus:ring-4 ring-purple-50 transition-all" />
+                         <SoftButton variant="purple" className="px-6 py-3.5 rounded-xl shadow-sm" onClick={() => {
                            if(chatInput.trim()) {
                              const newMsg = { text: chatInput, sender: 'Moi', time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'}) };
                              setActiveChat({...activeChat, messages: [...activeChat.messages, newMsg]});
                              setChatInput('');
                            }
-                         }}><Send size={24} /></SoftButton>
+                         }}><Send size={18} /></SoftButton>
                        </div>
                     </div>
                   )}
@@ -418,44 +424,44 @@ export const FreelanceDashboard = ({ onLogout }) => {
 
            {activeTab === 'missions' && (
              <div className="space-y-8 animate-in slide-in-from-right-10 duration-500">
-               <h3 className="text-4xl font-black uppercase italic tracking-tighter">Mes Missions</h3>
+               <h3 className="text-3xl font-bold tracking-tight text-gray-900">Mes Missions</h3>
                
                <div className="space-y-6">
                  {tasks.map(mission => (
-                   <SoftCard key={mission.id} color={mission.status === 'active' ? 'purple' : 'white'} className={mission.status === 'active' ? '!bg-[#F3E5F5]' : ''}>
+                   <SoftCard key={mission.id} color={mission.status === 'active' ? 'purple' : 'white'} className={mission.status === 'active' ? 'bg-purple-50/50 border-purple-200' : ''}>
                       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                         <div className="space-y-2">
                           <div className="flex gap-2 items-center">
                             {mission.status === 'active' && <SoftBadge color="yellow">En cours</SoftBadge>}
                             {mission.status === 'completed' && <SoftBadge color="green">Mission Terminée</SoftBadge>}
-                            <SoftBadge color="blue">{mission.type || 'Web / Mobile'}</SoftBadge>
+                            <SoftBadge color="blue" className="bg-blue-50 text-blue-700 border-blue-200">{mission.type || 'Web / Mobile'}</SoftBadge>
                           </div>
-                          <h4 className="font-black text-2xl uppercase italic">{mission.title}</h4>
-                          <p className="font-bold text-gray-500">Apporteur : {mission.agent} • Client Final : {mission.client}</p>
+                          <h4 className="font-bold text-2xl text-gray-900">{mission.title}</h4>
+                          <p className="font-medium text-gray-500 text-sm">Apporteur : {mission.agent} • Client Final : {mission.client}</p>
                         </div>
                         <div className="text-right shrink-0 flex flex-col items-end">
-                          <p className="font-black text-3xl text-gray-900 mb-2">{mission.budget}</p>
-                          <p className="text-[10px] font-bold text-gray-400 flex items-center gap-1">
-                            <ShieldCheck size={12}/> {mission.escrow ? 'Sécurisé Escrow' : 'Paiement Direct'}
+                          <p className="font-bold text-3xl text-gray-900 mb-2">{mission.budget}</p>
+                          <p className="text-[10px] font-semibold text-gray-400 flex items-center gap-1 uppercase tracking-wide">
+                            <ShieldCheck size={14}/> {mission.escrow ? 'Sécurisé Escrow' : 'Paiement Direct'}
                           </p>
                         </div>
                       </div>
-                      <p className="font-bold text-gray-600 max-w-2xl mt-4 border-l-[4px] border-black pl-4 mb-6">
+                      <p className="font-medium text-gray-600 max-w-2xl mt-4 border-l-[3px] border-purple-200 pl-4 py-1 mb-6 text-sm">
                         "{mission.desc}"
                       </p>
                       
                       {mission.status === 'active' && (
-                        <div className="bg-[#E8F5E9] border-[3px] border-black rounded-[20px] p-4 flex flex-col md:flex-row justify-between items-center gap-6 mt-6">
+                        <div className="bg-green-50/50 border-[1.5px] border-green-200 rounded-2xl p-5 flex flex-col md:flex-row justify-between items-center gap-6 mt-6">
                           <div className="flex-1 w-full">
                             <div className="flex justify-between items-center mb-2">
-                              <span className="font-black uppercase text-sm">Time Tracking Synapse</span>
-                              <span className="font-black text-green-700">{mission.hoursTracked || 0}h / {mission.duration * 7}h max</span>
+                              <span className="font-semibold text-sm text-green-800">Time Tracking Synapse</span>
+                              <span className="font-bold text-green-700">{mission.hoursTracked || 0}h / {mission.duration * 7}h max</span>
                             </div>
-                            <div className="h-4 bg-white border-[2px] border-black rounded-full overflow-hidden">
-                              <div className="h-full bg-green-400 transition-all" style={{ width: `${Math.min(100, ((mission.hoursTracked || 0) / (mission.duration * 7)) * 100)}%` }}></div>
+                            <div className="h-3 bg-white border-[1.5px] border-green-200 rounded-full overflow-hidden">
+                              <div className="h-full bg-green-400 transition-all rounded-full" style={{ width: `${Math.min(100, ((mission.hoursTracked || 0) / (mission.duration * 7)) * 100)}%` }}></div>
                             </div>
                           </div>
-                          <SoftButton variant="black" className="shrink-0 px-6 py-3 max-h-12" onClick={() => {
+                          <SoftButton variant="black" className="shrink-0 px-6 py-2.5 max-h-12 shadow-sm" onClick={() => {
                             const newH = (mission.hoursTracked || 0) + 4;
                             setTasks(tasks.map(t => t.id === mission.id ? {...t, hoursTracked: newH} : t));
                              if (newH >= mission.duration * 7) showAlert("Objectif de facturation atteint ! L'Apporteur vient d'être notifié pour débloquer le jalon.", "info");
@@ -466,14 +472,14 @@ export const FreelanceDashboard = ({ onLogout }) => {
                       )}
 
                       {mission.status === 'active' && (
-                         <div className="flex flex-col md:flex-row gap-4 mt-6 pt-6 border-t-[3px] border-black border-dashed">
-                            <SoftButton variant="white" className="flex-1 text-red-600 shadow-none hover:bg-red-50 text-sm border-[3px] border-red-200" onClick={() => {
+                         <div className="flex flex-col md:flex-row gap-4 mt-6 pt-6 border-t-[1.5px] border-gray-100 border-dashed">
+                            <SoftButton variant="white" className="flex-1 text-red-600 hover:bg-red-50 text-sm shadow-sm border-red-200" onClick={() => {
                               setTasks(tasks.map(t => t.id === mission.id ? {...t, status: 'disputed'} : t));
                               showAlert("⚠️ Contrat gelé informatiquement. Un médiateur Synapse va rentrer dans la boucle pour vous protéger.", "error");
                             }}>
                               <ShieldCheck size={16} className="mr-2 inline" /> Signaler Un Problème
                             </SoftButton>
-                            <SoftButton variant="yellow" className="flex-1 text-sm shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]" onClick={() => {
+                            <SoftButton variant="purple" className="flex-1 text-sm shadow-sm border-purple-300" onClick={() => {
                               setTasks(tasks.map(t => t.id === mission.id ? {...t, status: 'pending_verification'} : t));
                               showAlert("✅ Fin de mission annoncée à l'apporteur ! Demande de libération des fonds Escrow envoyée.", "success");
                             }}>
@@ -483,33 +489,33 @@ export const FreelanceDashboard = ({ onLogout }) => {
                        )}
 
                        {mission.status === 'disputed' && (
-                         <div className="bg-red-50 border-[3px] border-red-600 rounded-[20px] p-6 mt-6">
-                           <h4 className="font-black text-red-600 uppercase italic flex items-center gap-3 mb-3"><X size={28} /> Mission Gelée (Surexploitation/Abus)</h4>
-                           <p className="font-bold text-gray-700 text-sm">Vous avez émis un signalement, le système a bloqué les actions sur l'Escrow de l'Entreprise. Un agent du support Synapse prend le relais très rapidement.</p>
+                         <div className="bg-red-50 border-[1.5px] border-red-200 rounded-2xl p-6 mt-6">
+                           <h4 className="font-bold text-red-600 flex items-center gap-2 mb-2"><X size={20} /> Mission Gelée (Surexploitation/Abus)</h4>
+                           <p className="font-medium text-red-700 text-sm opacity-90">Vous avez émis un signalement, le système a bloqué les actions sur l'Escrow de l'Entreprise. Un agent du support Synapse prend le relais très rapidement.</p>
                          </div>
                        )}
 
                        {mission.status === 'pending_verification' && (
-                         <div className="bg-[#FFF9C4] border-[3px] border-yellow-500 rounded-[20px] p-6 mt-6 shadow-[4px_4px_0px_0px_rgba(234,179,8,1)]">
-                           <h4 className="font-black text-yellow-600 uppercase italic flex items-center gap-3 mb-2"><CheckCircle size={28} /> Vérification en cours</h4>
-                           <p className="font-bold text-gray-800 text-sm">Fin de mission annoncée. En attente du feu vert du client final pour le virement vers votre compte !</p>
+                         <div className="bg-yellow-50 border-[1.5px] border-yellow-200 rounded-2xl p-6 mt-6 shadow-sm">
+                           <h4 className="font-bold text-yellow-700 flex items-center gap-2 mb-2"><CheckCircle size={20} /> Vérification en cours</h4>
+                           <p className="font-medium text-yellow-800 text-sm opacity-90">Fin de mission annoncée. En attente du feu vert du client final pour le virement vers votre compte !</p>
                          </div>
                        )}
 
                       {mission.status === 'completed' && (
-                        <div className="mt-6 pt-6 border-t-[3px] border-black">
+                        <div className="mt-6 pt-6 border-t-[1.5px] border-gray-100">
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-                            <div className="flex items-center gap-4 text-yellow-500 mb-1">
-                              {[...Array(5)].map((_, i) => <Star key={i} size={24} fill={i < mission.rating ? 'currentColor' : 'none'} strokeWidth={3} />)}
+                            <div className="flex items-center gap-2 text-yellow-400 mb-1">
+                              {[...Array(5)].map((_, i) => <Star key={i} size={20} fill={i < mission.rating ? 'currentColor' : 'none'} strokeWidth={2} />)}
                             </div>
-                            <p className="font-bold italic text-gray-600 text-sm">Avis Client : "{mission.review}"</p>
+                            <p className="font-medium italic text-gray-500 text-sm">Avis Client : "{mission.review}"</p>
                           </div>
                           {!mission.hasReviewedApporteur ? (
-                             <SoftButton variant="yellow" className="w-full text-sm shadow-none border-[3px] hover:bg-[#FFF9C4]" onClick={() => setReviewModal({...mission, rating: 5, comment: ''})}>
+                             <SoftButton variant="yellow" className="w-full text-sm shadow-sm bg-yellow-400/20 text-yellow-800 border-yellow-300 hover:bg-yellow-400/30 font-semibold" onClick={() => setReviewModal({...mission, rating: 5, comment: ''})}>
                                <Star size={16} fill="currentColor" className="mr-2 inline" /> Évaluer {mission.agent} (Apporteur)
                              </SoftButton>
                           ) : (
-                             <SoftBadge color="green" className="w-full justify-center !py-3 bg-[#E8F5E9] border-black text-black">✅ Vous avez recommandé {mission.agent}</SoftBadge>
+                             <p className="w-full text-center text-sm font-semibold text-green-700 bg-green-50 py-3 rounded-xl border-[1.5px] border-green-200">✅ Vous avez recommandé {mission.agent}</p>
                           )}
                         </div>
                       )}
@@ -521,36 +527,36 @@ export const FreelanceDashboard = ({ onLogout }) => {
 
            {activeTab === 'finance' && (
              <div className="space-y-8 animate-in slide-in-from-right-10 duration-500">
-               <h3 className="text-4xl font-black uppercase italic tracking-tighter">Mon Portefeuille</h3>
+               <h3 className="text-3xl font-bold tracking-tight text-gray-900">Mon Portefeuille</h3>
                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                 <SoftCard title="Sécurisé en Escrow (TJM)" color="yellow" className="!bg-[#FFF9C4]">
-                   <p className="text-4xl font-black italic">{tasks.filter(t => ['active', 'pending_verification', 'disputed'].includes(t.status)).reduce((acc, t) => acc + parseInt(t.budget.replace(/\D/g, '') || 0), 0).toLocaleString('fr-FR')} €</p>
-                   <p className="text-sm font-bold mt-2 text-gray-600">Revenus des missions actives (À débloquer)</p>
+                 <SoftCard title="Sécurisé en Escrow (TJM)" color="yellow" className="bg-yellow-50/50 border-[1.5px] border-yellow-200">
+                   <p className="text-4xl font-bold text-gray-900">{tasks.filter(t => ['active', 'pending_verification', 'disputed'].includes(t.status)).reduce((acc, t) => acc + parseInt(t.budget.replace(/\D/g, '') || 0), 0).toLocaleString('fr-FR')} €</p>
+                   <p className="text-sm font-semibold mt-2 text-yellow-700">Revenus des missions actives (À débloquer)</p>
                  </SoftCard>
-                 <SoftCard title="Revenus Débloqués (Viré)" color="green" className="!bg-[#E8F5E9]">
-                   <p className="text-4xl font-black italic">{(14200 + tasks.filter(t => t.status === 'completed').reduce((acc, t) => acc + parseInt(t.budget.replace(/\D/g, '') || 0), 0)).toLocaleString('fr-FR')} €</p>
-                   <p className="text-sm font-bold mt-2 text-gray-600">Historique cumulé des virements Synapse</p>
+                 <SoftCard title="Revenus Débloqués (Viré)" color="green" className="bg-green-50/50 border-[1.5px] border-green-200">
+                   <p className="text-4xl font-bold text-gray-900">{(14200 + tasks.filter(t => t.status === 'completed').reduce((acc, t) => acc + parseInt(t.budget.replace(/\D/g, '') || 0), 0)).toLocaleString('fr-FR')} €</p>
+                   <p className="text-sm font-semibold mt-2 text-green-700">Historique cumulé des virements Synapse</p>
                  </SoftCard>
                </div>
 
                <SoftCard title="Derniers Mouvements Actifs du Portefeuille">
                  <div className="space-y-4">
                    {tasks.map(t => (
-                     <div key={`fin_${t.id}`} className="border-[3px] border-black rounded-[20px] p-6 bg-white flex flex-col md:flex-row justify-between items-center md:items-start gap-4 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all">
+                     <div key={`fin_${t.id}`} className="border-[1.5px] border-gray-200 rounded-2xl p-5 bg-white flex flex-col md:flex-row justify-between items-center md:items-start gap-4 hover:shadow-sm transition-all hover:border-gray-300">
                        <div>
-                         <h4 className="font-black uppercase italic text-lg">{t.title}</h4>
-                         <p className="text-xs font-bold text-gray-500 uppercase">Apporteur : {t.agent}</p>
+                         <h4 className="font-bold text-lg text-gray-900 mb-1">{t.title}</h4>
+                         <p className="text-sm font-medium text-gray-500">Apporteur : {t.agent}</p>
                        </div>
-                       <div className="text-right w-full md:w-auto flex flex-row md:flex-col justify-between md:justify-start items-center md:items-end">
-                         <p className={`font-black text-2xl ${t.status === 'completed' ? 'text-green-600' : 'text-yellow-600'}`}>{t.budget}</p>
-                         <p className="text-[10px] uppercase font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-full border border-gray-300 mt-1 shadow-sm">
+                       <div className="text-right w-full md:w-auto flex flex-row md:flex-col justify-between md:justify-end items-center md:items-end gap-2">
+                         <p className={`font-bold text-2xl ${t.status === 'completed' ? 'text-green-600' : 'text-yellow-600'}`}>{t.budget}</p>
+                         <p className={`text-[10px] uppercase font-semibold text-${t.status === 'completed' ? 'green' : 'yellow'}-700 bg-${t.status === 'completed' ? 'green' : 'yellow'}-50 px-2 py-1 rounded-md border-[1.5px] border-${t.status === 'completed' ? 'green' : 'yellow'}-200`}>
                            {t.status === 'completed' ? 'Fonds Libérés (Payé)' : 'Verrouillé (Escrow)'}
                          </p>
                        </div>
                      </div>
                    ))}
-                   {tasks.length === 0 && <p className="text-xs font-bold text-gray-400 italic">Aucune transaction répertoriée.</p>}
+                   {tasks.length === 0 && <p className="text-sm font-medium text-gray-400 italic p-6 text-center border-[1.5px] border-gray-100 border-dashed rounded-xl">Aucune transaction répertoriée.</p>}
                  </div>
                </SoftCard>
              </div>

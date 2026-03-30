@@ -32,25 +32,25 @@ export const AlertProvider = ({ children }) => {
             key={alert.id} 
             className={`
               animate-in slide-in-from-right-8 fade-in duration-300
-              pointer-events-auto flex items-start gap-4 p-5 rounded-[20px] border-[4px] border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]
-              ${alert.type === 'success' ? 'bg-[#E8F5E9] text-black' : ''}
-              ${alert.type === 'error' ? 'bg-[#FFEBEE] text-black' : ''}
-              ${alert.type === 'info' ? 'bg-[#FFEB3B] text-black' : ''}
+              pointer-events-auto flex items-start gap-4 p-5 rounded-2xl border-[1.5px] shadow-sm
+              ${alert.type === 'success' ? 'bg-green-50 border-green-200 text-green-800' : ''}
+              ${alert.type === 'error' ? 'bg-red-50 border-red-200 text-red-800' : ''}
+              ${alert.type === 'info' ? 'bg-blue-50 border-blue-200 text-blue-800' : ''}
             `}
           >
             <div className="shrink-0 mt-0.5">
-              {alert.type === 'success' && <CheckCircle size={28} strokeWidth={3} className="text-green-600" />}
-              {alert.type === 'error' && <AlertTriangle size={28} strokeWidth={3} className="text-red-500" />}
-              {alert.type === 'info' && <Bell size={28} strokeWidth={3} className="text-black" />}
+              {alert.type === 'success' && <CheckCircle size={24} strokeWidth={2} className="text-green-600" />}
+              {alert.type === 'error' && <AlertTriangle size={24} strokeWidth={2} className="text-red-600" />}
+              {alert.type === 'info' && <Bell size={24} strokeWidth={2} className="text-blue-600" />}
             </div>
             <div className="flex-1">
-              <p className="font-bold text-[14px] leading-snug">{alert.message}</p>
+              <p className="font-semibold text-sm leading-snug">{alert.message}</p>
             </div>
             <button 
               onClick={() => removeAlert(alert.id)}
-              className="shrink-0 w-8 h-8 flex items-center justify-center hover:scale-110 hover:bg-red-50 transition-all bg-white border-[3px] border-black rounded-full"
+              className="shrink-0 w-8 h-8 flex items-center justify-center hover:bg-black/5 transition-all rounded-full"
             >
-              <X size={16} strokeWidth={4} />
+              <X size={16} strokeWidth={2} className="opacity-70" />
             </button>
           </div>
         ))}

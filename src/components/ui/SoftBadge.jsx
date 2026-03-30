@@ -9,7 +9,7 @@ export const SoftBadge = ({ children, color = "yellow" }) => {
     green: 'bg-[#81C784]',
   };
   return (
-    <span className={`border-[2px] border-black px-4 py-1.5 rounded-full text-[12px] font-black uppercase ${colors[color]} shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}>
+    <span className={`border-[1.5px] border-black px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide ${colors[color]}`}>
       {children}
     </span>
   );
