@@ -2,23 +2,19 @@ import React from 'react';
 
 export const SoftButton = ({ children, variant = 'yellow', className = '', onClick, disabled = false, type = "button" }) => {
   const variants = {
-    yellow: 'bg-[#FFEB3B] hover:bg-[#FDD835] text-black border-black',
-    orange: 'bg-[#FFCC80] hover:bg-[#FFB74D] text-black border-black',
-    purple: 'bg-[#CE93D8] hover:bg-[#BA68C8] text-black border-black',
-    blue: 'bg-[#90CAF9] hover:bg-[#64B5F6] text-black border-black',
-    green: 'bg-[#81C784] hover:bg-[#66BB6A] text-black border-black',
-    white: 'bg-white hover:bg-gray-50 text-black border-gray-200 shadow-sm active:shadow-none hover:border-gray-300',
-    black: 'bg-black text-white hover:bg-zinc-800 border-black',
+    yellow: 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-[0_2px_10px_-3px_rgba(79,70,229,0.5)] border border-transparent', // Mapped to primary Corporate Indigo
+    orange: 'bg-orange-500 hover:bg-orange-600 text-white shadow-sm border border-transparent',
+    purple: 'bg-purple-600 hover:bg-purple-700 text-white shadow-sm border border-transparent',
+    blue: 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm border border-transparent',
+    green: 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm border border-transparent',
+    white: 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-sm',
+    black: 'bg-slate-900 hover:bg-slate-800 text-white shadow-sm border border-transparent',
   };
-
-  const isWhite = variant === 'white';
 
   return (
     <button 
       type={type} onClick={onClick} disabled={disabled}
-      className={`border-[1.5px] rounded-xl transition-all duration-200 font-semibold px-6 py-3 flex items-center justify-center gap-3 disabled:opacity-40 disabled:cursor-not-allowed ${
-        !isWhite ? 'shadow-[3px_3px_0px_0px_rgba(0,0,0,0.8)] active:shadow-none active:translate-x-[3px] active:translate-y-[3px]' : ''
-      } ${variants[variant] || variants.yellow} ${className}`}
+      className={`rounded-lg transition-all duration-200 font-medium px-5 py-2.5 flex items-center justify-center gap-2.5 disabled:opacity-50 disabled:cursor-not-allowed hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${variants[variant] || variants.yellow} ${className}`}
     >
       {children}
     </button>

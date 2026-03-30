@@ -57,21 +57,21 @@ export const RegistrationWorkflow = ({ selectedRole, onComplete, onCancel }) => 
   };
 
   return (
-    <div className="min-h-screen p-6 pb-40 font-sans overflow-x-hidden">
-      <div className="max-w-4xl mx-auto space-y-10 animate-in slide-in-from-bottom-20 duration-700 mt-6">
+    <div className="min-h-screen p-6 pb-40 font-sans overflow-x-hidden bg-slate-50">
+      <div className="max-w-4xl mx-auto space-y-8 animate-in slide-in-from-bottom-20 duration-700 mt-6">
         
-        <header className="flex justify-between items-center bg-white border-[1.5px] border-gray-200 rounded-2xl p-6 shadow-sm">
-           <button type="button" onClick={onCancel} className="font-medium text-sm text-gray-500 hover:text-gray-900 transition-colors">Annuler</button>
+        <header className="flex justify-between items-center bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+           <button type="button" onClick={onCancel} className="font-semibold text-sm text-slate-500 hover:text-slate-900 transition-colors">Annuler</button>
            <div className="text-center">
-             <h2 className="text-xl font-bold tracking-tight text-gray-900">Onboarding {selectedRole}</h2>
-             <p className="text-xs font-semibold tracking-wider text-gray-500 mt-1 uppercase">Profil professionnel 2026</p>
+             <h2 className="text-xl font-bold tracking-tight text-slate-900">Onboarding {selectedRole}</h2>
+             <p className="text-xs font-semibold tracking-wider text-slate-500 mt-1 uppercase">Profil professionnel 2026</p>
            </div>
-           <div className="w-10 h-10 bg-[#FBC02D] border-[1.5px] border-yellow-400 rounded-xl flex items-center justify-center shadow-sm"><Zap size={20} strokeWidth={2.5} className="text-white" /></div>
+           <div className="w-10 h-10 bg-indigo-50 border border-indigo-100 rounded-xl flex items-center justify-center shadow-sm"><Zap size={20} strokeWidth={2} className="text-indigo-600" /></div>
         </header>
 
         <form className="space-y-10" onSubmit={(e) => { e.preventDefault(); onComplete({...formData, role: selectedRole}); }}>
           <div className="space-y-6 animate-in slide-in-from-right">
-            <h2 className="text-2xl font-bold mb-6 text-gray-900">Vos Informations</h2>
+            <h2 className="text-2xl font-bold mb-6 text-slate-900">Vos Informations</h2>
             
             {formData.role === 'entreprise' ? (
               <>
@@ -155,9 +155,9 @@ export const RegistrationWorkflow = ({ selectedRole, onComplete, onCancel }) => 
                 <SoftInput required label="Années d'Expérience (Total)" type="number" placeholder="5" value={formData.expTotal} onChange={e => setFormData({...formData, expTotal: e.target.value})} />
                 
                 <div className="pt-4">
-                   <div className="bg-yellow-50/50 border-[1.5px] border-yellow-200 p-6 rounded-2xl shadow-sm">
-                     <p className="font-bold text-lg mb-2 text-yellow-900">Paiements Sécurisés (Escrow)</p>
-                     <p className="font-medium text-gray-700 text-sm mb-5">Afin de garantir le paiement de vos prestations et commissions par le système Synapse, le renseignement de vos coordonnées bancaires est exigé.</p>
+                   <div className="bg-emerald-50/50 border border-emerald-100 p-6 rounded-2xl shadow-sm">
+                     <p className="font-bold text-lg mb-2 text-emerald-900 flex items-center gap-2"><Briefcase size={20} className="text-emerald-600" /> Paiements Sécurisés (Escrow)</p>
+                     <p className="font-medium text-slate-700 text-sm mb-5">Afin de garantir le paiement de vos prestations et commissions par le système Synapse, le renseignement de vos coordonnées bancaires est exigé.</p>
                      <SoftInput required label="IBAN Bancaire" placeholder="FR76..." value={formData.iban} onChange={e => setFormData({...formData, iban: e.target.value})} />
                    </div>
                 </div>
@@ -167,12 +167,12 @@ export const RegistrationWorkflow = ({ selectedRole, onComplete, onCancel }) => 
 
           {(selectedRole === 'freelance' || selectedRole === 'apporteur') && (
               <SoftCard title="Vos Domaines" icon={Target} color="yellow">
-                 <p className="font-semibold text-sm mb-5 text-gray-500">Sélectionnez vos domaines d'expertise :</p>
+                 <p className="font-medium text-sm mb-5 text-slate-500">Sélectionnez vos domaines d'expertise :</p>
                  <div className="flex flex-wrap gap-3">
                     {FREELANCE_DOMAINS.map(d => (
                       <button 
                         key={d} type="button" onClick={() => toggleDomain(d)}
-                        className={`border-[1.5px] px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-300 ${formData.selectedDomains.includes(d) ? 'bg-gray-900 border-gray-900 text-white shadow-sm' : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300'}`}
+                        className={`border px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 ${formData.selectedDomains.includes(d) ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm' : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300 shadow-sm'}`}
                       >
                         {d}
                       </button>
@@ -186,12 +186,12 @@ export const RegistrationWorkflow = ({ selectedRole, onComplete, onCancel }) => 
               <SoftCard title="Skills & Bio" icon={Award} color="purple">
                  <div className="space-y-8">
                     <div className="space-y-4">
-                       <p className="font-semibold text-sm text-gray-500">Sélectionnez vos compétences techniques :</p>
+                       <p className="font-medium text-sm text-slate-500">Sélectionnez vos compétences techniques :</p>
                        <div className="flex flex-wrap gap-2">
                           {SKILLS_LIST.map(s => (
                             <button 
                               key={s} type="button" onClick={() => addSkill(s)}
-                              className="px-4 py-2 bg-blue-50 border-[1.5px] border-blue-200 text-blue-700 rounded-lg font-medium text-sm hover:bg-blue-100 transition-colors"
+                              className="px-3.5 py-1.5 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-md font-medium text-sm hover:bg-indigo-100 transition-colors"
                             >
                               + {s}
                             </button>
@@ -201,18 +201,18 @@ export const RegistrationWorkflow = ({ selectedRole, onComplete, onCancel }) => 
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                        {formData.skills.map(skill => (
-                         <div key={skill.name} className="bg-white border-[1.5px] border-gray-200 p-4 rounded-xl flex items-center justify-between shadow-sm animate-in zoom-in">
+                         <div key={skill.name} className="bg-white border border-slate-200 p-4 rounded-xl flex items-center justify-between shadow-sm animate-in zoom-in">
                             <div>
-                               <p className="font-semibold text-gray-900">{skill.name}</p>
+                               <p className="font-semibold text-slate-900">{skill.name}</p>
                             </div>
                             <div className="flex items-center gap-3">
                                <input 
                                  type="number" value={skill.years} 
                                  onChange={(e) => updateSkillYears(skill.name, e.target.value)}
-                                 className="w-16 border-[1.5px] border-gray-200 p-2 rounded-lg text-center font-semibold focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+                                 className="w-16 border border-slate-200 p-1.5 rounded-lg text-center font-medium focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
                                />
-                               <span className="text-xs font-semibold text-gray-500 uppercase">Ans</span>
-                               <button type="button" onClick={() => removeSkill(skill.name)} className="text-red-500 hover:text-red-700 transition-colors"><X size={18} /></button>
+                               <span className="text-xs font-semibold text-slate-400 uppercase">Ans</span>
+                               <button type="button" onClick={() => removeSkill(skill.name)} className="text-slate-400 hover:text-rose-500 transition-colors"><X size={18} strokeWidth={2} /></button>
                             </div>
                          </div>
                        ))}
@@ -231,13 +231,13 @@ export const RegistrationWorkflow = ({ selectedRole, onComplete, onCancel }) => 
                     </div>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                       <div className="p-8 border-[1.5px] border-gray-300 border-dashed rounded-2xl bg-gray-50 text-center space-y-3 hover:border-gray-400 hover:bg-gray-100 transition-colors cursor-pointer group">
-                          <FileUp className="mx-auto text-gray-400 group-hover:text-gray-600 transition-colors" size={32} />
-                          <p className="font-medium text-sm text-gray-600">Uploader votre CV (PDF)</p>
+                       <div className="p-8 border border-slate-300 border-dashed rounded-xl bg-slate-50 text-center space-y-3 hover:border-indigo-400 hover:bg-indigo-50 transition-colors cursor-pointer group">
+                          <FileUp className="mx-auto text-slate-400 group-hover:text-indigo-500 transition-colors" size={32} strokeWidth={1.5} />
+                          <p className="font-medium text-sm text-slate-600 group-hover:text-indigo-700">Uploader votre CV (PDF)</p>
                        </div>
-                       <div className="p-8 border-[1.5px] border-gray-300 border-dashed rounded-2xl bg-gray-50 text-center space-y-3 hover:border-gray-400 hover:bg-gray-100 transition-colors cursor-pointer group">
-                          <FileText className="mx-auto text-gray-400 group-hover:text-gray-600 transition-colors" size={32} />
-                          <p className="font-medium text-sm text-gray-600">Lettre de Motivation</p>
+                       <div className="p-8 border border-slate-300 border-dashed rounded-xl bg-slate-50 text-center space-y-3 hover:border-indigo-400 hover:bg-indigo-50 transition-colors cursor-pointer group">
+                          <FileText className="mx-auto text-slate-400 group-hover:text-indigo-500 transition-colors" size={32} strokeWidth={1.5} />
+                          <p className="font-medium text-sm text-slate-600 group-hover:text-indigo-700">Lettre de Motivation</p>
                        </div>
                     </div>
                  </div>
@@ -246,8 +246,8 @@ export const RegistrationWorkflow = ({ selectedRole, onComplete, onCancel }) => 
           )}
 
           <div className="pt-8 w-full flex justify-end">
-             <SoftButton type="submit" variant="yellow" className="py-4 px-10 text-lg rounded-xl">
-                Finaliser l'Inscription <Zap size={20} className="ml-1" fill="currentColor" />
+             <SoftButton type="submit" variant="yellow" className="py-3.5 px-8 text-base">
+                Finaliser l'Inscription <Zap size={18} className="ml-1" fill="currentColor" strokeWidth={0} />
              </SoftButton>
           </div>
         </form>

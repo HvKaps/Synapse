@@ -249,73 +249,75 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F0F2F5] flex flex-col md:flex-row font-sans relative">
+    <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row font-sans relative">
       
       {/* Profile Modal */}
       {selectedProfile && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/60 animate-in fade-in duration-300 overflow-y-auto pt-24 pb-12">
-          <div className="max-w-2xl w-full animate-in zoom-in duration-300 my-auto">
-            <SoftCard title={`Fiche : ${selectedProfile.name}`} color="white" className="relative shadow-xl border-[1.5px] border-gray-200">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-300 overflow-y-auto pt-24 pb-12">
+          <div className="max-w-2xl w-full animate-in zoom-in-95 duration-300 my-auto">
+            <SoftCard title={`Fiche : ${selectedProfile.name}`} className="relative shadow-xl border border-slate-200 bg-white">
               <button 
                 onClick={() => setSelectedProfile(null)}
-                className="absolute top-8 right-8 w-12 h-12 border-[1.5px] border-gray-200 rounded-full flex items-center justify-center bg-white hover:bg-gray-50 hover:text-gray-900 transition-colors"
+                className="absolute top-6 right-6 w-10 h-10 border border-slate-200 rounded-full flex items-center justify-center bg-white hover:bg-slate-50 hover:text-slate-900 transition-colors shadow-sm"
                 title="Fermer"
               >
-                <X size={24} strokeWidth={2.5} />
+                <X size={20} strokeWidth={2} className="text-slate-500" />
               </button>
               
               <div className="space-y-8">
                 <div className="flex flex-col md:flex-row items-center gap-8">
-                  <div className="w-32 h-32 shrink-0 border-[1.5px] border-yellow-400 rounded-2xl overflow-hidden shadow-sm bg-[#FBC02D]">
-                    {selectedProfile.type === 'company' ? (
-                       <img src={`https://api.dicebear.com/7.x/shapes/svg?seed=${selectedProfile.avatar}`} alt="avatar" className="w-full h-full object-cover" />
-                    ) : (
-                       <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${selectedProfile.avatar}`} alt="avatar" className="w-full h-full object-cover" />
-                    )}
+                  <div className="w-32 h-32 shrink-0 border border-indigo-100 rounded-2xl overflow-hidden shadow-sm bg-indigo-50/50 p-2">
+                    <div className="w-full h-full rounded-xl overflow-hidden bg-white">
+                      {selectedProfile.type === 'company' ? (
+                         <img src={`https://api.dicebear.com/7.x/shapes/svg?seed=${selectedProfile.avatar}`} alt="avatar" className="w-full h-full object-cover" />
+                      ) : (
+                         <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${selectedProfile.avatar}`} alt="avatar" className="w-full h-full object-cover" />
+                      )}
+                    </div>
                   </div>
                   <div className="text-center md:text-left">
-                    <h3 className="text-3xl font-bold tracking-tight text-gray-900">{selectedProfile.name}</h3>
-                    <p className="font-semibold text-gray-500 uppercase tracking-widest text-sm mt-1">{selectedProfile.sector || selectedProfile.role}</p>
-                    <div className="flex justify-center md:justify-start items-center gap-2 font-bold text-xl text-yellow-600 mt-2">
+                    <h3 className="text-3xl font-bold tracking-tight text-slate-900">{selectedProfile.name}</h3>
+                    <p className="font-semibold text-indigo-600 tracking-wider text-sm mt-1">{selectedProfile.sector || selectedProfile.role}</p>
+                    <div className="flex justify-center md:justify-start items-center gap-2 font-bold text-xl text-amber-500 mt-3">
                       <Star fill="currentColor" size={20} /> {selectedProfile.rating || selectedProfile.note} / 5
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-gray-50 p-6 rounded-2xl border-[1.5px] border-gray-200 text-left">
-                  <p className="font-medium text-gray-700 whitespace-pre-line">"{selectedProfile.bio}"</p>
+                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-left">
+                  <p className="font-medium text-slate-700 whitespace-pre-line leading-relaxed">"{selectedProfile.bio}"</p>
                 </div>
 
                 {selectedProfile.type === 'freelance' && (
                   <div className="space-y-6">
                     <div className="flex flex-wrap items-center gap-2">
                       {selectedProfile.skills?.map(skill => (
-                        <SoftBadge key={skill} color="purple">{skill}</SoftBadge>
+                        <SoftBadge key={skill} color="purple" className="bg-indigo-50 text-indigo-700 border-indigo-200">{skill}</SoftBadge>
                       ))}
-                      <SoftBadge color="blue">{selectedProfile.exp || 'Expérience'}</SoftBadge>
-                      <SoftBadge color="green">{selectedProfile.education || 'Formation'}</SoftBadge>
+                      <SoftBadge color="blue" className="bg-sky-50 text-sky-700 border-sky-200">{selectedProfile.exp || 'Expérience'}</SoftBadge>
+                      <SoftBadge color="green" className="bg-emerald-50 text-emerald-700 border-emerald-200">{selectedProfile.education || 'Formation'}</SoftBadge>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                        {selectedProfile.portfolio && (
-                         <a href={`https://${selectedProfile.portfolio}`} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 bg-white border-[1.5px] border-gray-200 rounded-xl font-medium text-gray-700 hover:bg-gray-50 transition-colors text-sm">
-                           <Globe size={18} className="text-blue-500" /> {selectedProfile.portfolio}
+                         <a href={`https://${selectedProfile.portfolio}`} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 bg-white border border-slate-200 rounded-xl font-medium text-slate-700 hover:bg-slate-50 hover:border-indigo-200 transition-all text-sm group shadow-sm">
+                           <Globe size={18} className="text-indigo-500 group-hover:scale-110 transition-transform" /> {selectedProfile.portfolio}
                          </a>
                        )}
                        {selectedProfile.github && (
-                         <a href={`https://github.com/${selectedProfile.github}`} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 bg-white border-[1.5px] border-gray-200 rounded-xl font-medium text-gray-700 hover:bg-gray-50 transition-colors text-sm">
-                           <GitBranch size={18} className="text-gray-500" /> {selectedProfile.github}
+                         <a href={`https://github.com/${selectedProfile.github}`} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 bg-white border border-slate-200 rounded-xl font-medium text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all text-sm group shadow-sm">
+                           <GitBranch size={18} className="text-slate-500 group-hover:scale-110 transition-transform" /> {selectedProfile.github}
                          </a>
                        )}
                        {selectedProfile.cvUrl && (
-                         <div className="flex items-center gap-3 p-4 bg-green-50 border-[1.5px] border-green-200 rounded-xl font-medium text-green-700 cursor-pointer hover:bg-green-100 transition-colors text-sm">
-                           <FileUp size={18} /> Télécharger CV & Lettre
+                         <div className="flex items-center gap-3 p-4 bg-emerald-50/50 border border-emerald-200 rounded-xl font-medium text-emerald-700 cursor-pointer hover:bg-emerald-50 hover:border-emerald-300 transition-all text-sm group shadow-sm">
+                           <FileUp size={18} className="group-hover:-translate-y-1 transition-transform" /> Télécharger CV & Lettre
                          </div>
                        )}
                     </div>
                     
-                    <SoftButton variant="yellow" className="w-full text-lg py-4 shadow-sm rounded-xl" onClick={() => directMessageFreelance(selectedProfile)}>
-                      <MessageSquare size={18} className="inline mr-2" /> Contacter (DM)
+                    <SoftButton variant="blue" className="w-full text-base py-3.5 shadow-sm rounded-xl" onClick={() => directMessageFreelance(selectedProfile)}>
+                      <MessageSquare size={18} className="inline mr-2" strokeWidth={2} /> Contacter (DM)
                     </SoftButton>
                   </div>
                 )}
@@ -323,34 +325,34 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
                 {selectedProfile.type === 'company' && (
                   <div className="space-y-6">
                     <div className="flex flex-wrap items-center gap-4">
-                      {selectedProfile.creationYear && <SoftBadge color="yellow">Créée en {selectedProfile.creationYear}</SoftBadge>}
-                      {selectedProfile.size && <SoftBadge color="blue">{selectedProfile.size}</SoftBadge>}
+                      {selectedProfile.creationYear && <SoftBadge color="yellow" className="bg-amber-50 text-amber-700 border-amber-200">Créée en {selectedProfile.creationYear}</SoftBadge>}
+                      {selectedProfile.size && <SoftBadge color="blue" className="bg-sky-50 text-sky-700 border-sky-200">{selectedProfile.size}</SoftBadge>}
                     </div>
                     {selectedProfile.website && (
-                       <a href={`https://${selectedProfile.website}`} target="_blank" rel="noreferrer" className="inline-flex justify-center items-center gap-3 p-4 bg-white border-[1.5px] border-gray-200 rounded-xl font-medium text-gray-700 hover:bg-gray-50 transition-colors text-sm w-full md:w-auto mt-2">
-                         <Globe size={18} className="text-blue-500" /> {selectedProfile.website}
+                       <a href={`https://${selectedProfile.website}`} target="_blank" rel="noreferrer" className="inline-flex justify-center items-center gap-3 p-4 bg-white border border-slate-200 rounded-xl font-medium text-slate-700 hover:bg-slate-50 hover:border-indigo-200 transition-all text-sm w-full md:w-auto mt-2 shadow-sm group">
+                         <Globe size={18} className="text-indigo-500 group-hover:scale-110 transition-transform" /> {selectedProfile.website}
                        </a>
                     )}
-                    <h4 className="font-bold text-lg text-gray-900 border-t-[1.5px] border-gray-200 pt-6">Contrats Ouverts</h4>
+                    <h4 className="font-bold text-lg text-slate-900 border-t border-slate-200 pt-6">Contrats Ouverts</h4>
                     {getCompanyOpportunities(selectedProfile.name).length > 0 ? (
                       getCompanyOpportunities(selectedProfile.name).map(opp => (
-                        <div key={opp.id} className="bg-white border-[1.5px] border-gray-200 rounded-xl p-5 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm">
+                        <div key={opp.id} className="bg-white border border-slate-200 rounded-xl p-5 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm hover:border-indigo-200 transition-all group">
                           <div>
-                            <p className="font-bold text-gray-900">{opp.title}</p>
-                            <p className="font-medium text-gray-500 text-sm mt-1">{opp.budget} € • {opp.resources}</p>
+                            <p className="font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">{opp.title}</p>
+                            <p className="font-medium text-slate-500 text-sm mt-1">{opp.budget} € • {opp.resources}</p>
                           </div>
-                          <SoftButton variant="yellow" className="w-full md:w-auto text-xs py-2.5 rounded-lg" onClick={() => directMessageCompany({ ...opp, avatar: selectedProfile.avatar })}>
-                            <MessageSquare size={14} className="inline mr-2" /> DM L'entreprise
+                          <SoftButton variant="blue" className="w-full md:w-auto text-xs py-2.5 rounded-lg shadow-sm" onClick={() => directMessageCompany({ ...opp, avatar: selectedProfile.avatar })}>
+                            <MessageSquare size={14} className="inline mr-2" strokeWidth={2} /> DM L'entreprise
                           </SoftButton>
                         </div>
                       ))
                     ) : (
-                      <p className="font-medium text-gray-500 italic">Aucun contrat en cours pour cette entreprise.</p>
+                      <p className="font-medium text-slate-500 italic p-6 border border-slate-200 border-dashed rounded-xl bg-slate-50/50 text-center">Aucun contrat en cours pour cette entreprise.</p>
                     )}
                   </div>
                 )}
 
-                <SoftButton className="w-full text-lg py-4 rounded-xl" variant="black" onClick={() => setSelectedProfile(null)}>
+                <SoftButton className="w-full text-base py-3.5 rounded-xl shadow-sm" variant="white" onClick={() => setSelectedProfile(null)}>
                   Fermer la Fiche
                 </SoftButton>
               </div>
@@ -360,94 +362,96 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
       )}
 
       {/* Sidebar */}
-      <aside className="w-full md:w-80 bg-white border-b-2 md:border-b-0 md:border-r-[1.5px] border-gray-200 p-8 flex flex-col space-y-10 shrink-0 overflow-y-auto">
+      <aside className="w-full md:w-72 lg:w-80 bg-white border-b md:border-b-0 md:border-r border-slate-200 p-6 lg:p-8 flex flex-col space-y-10 shrink-0 overflow-y-auto">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden">
-            <img src="/synapse_logo.png" alt="Synapse" className="w-full h-full object-contain" />
+          <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center overflow-hidden shadow-sm">
+            <Zap className="text-white" size={20} strokeWidth={2.5} />
           </div>
-          <span className="font-bold text-2xl tracking-tight text-gray-900">Synapse</span>
+          <span className="font-bold text-2xl tracking-tight text-slate-900">Synapse</span>
         </div>
 
-        <nav className="flex-1 space-y-2 font-medium text-sm text-gray-600">
-           <button onClick={() => setActiveTab('home')} className={`flex items-center gap-4 w-full p-3 rounded-lg transition-all ${activeTab === 'home' ? 'bg-gray-100 text-gray-900 font-semibold' : 'hover:bg-gray-50 hover:text-gray-900'}`}><LayoutDashboard size={18} /> Accueil</button>
-           <button onClick={() => setActiveTab('messagerie')} className={`flex items-center gap-4 w-full p-3 rounded-lg transition-all ${activeTab === 'messagerie' ? 'bg-gray-100 text-gray-900 font-semibold' : 'hover:bg-gray-50 hover:text-gray-900'}`}><Inbox size={18} /> Messagerie</button>
-           <button onClick={() => setActiveTab('finance')} className={`flex items-center gap-4 w-full p-3 rounded-lg transition-all ${activeTab === 'finance' ? 'bg-gray-100 text-gray-900 font-semibold' : 'hover:bg-gray-50 hover:text-gray-900'}`}><Wallet size={18} /> Finance</button>
-           <button onClick={() => setActiveTab('vivier')} className={`flex items-center gap-4 w-full p-3 rounded-lg transition-all ${activeTab === 'vivier' ? 'bg-gray-100 text-gray-900 font-semibold' : 'hover:bg-gray-50 hover:text-gray-900'}`}><Component size={18} /> Kanban Vivier</button>
-           <button onClick={() => setActiveTab('analytique')} className={`flex items-center gap-4 w-full p-3 rounded-lg transition-all ${activeTab === 'analytique' ? 'bg-gray-100 text-gray-900 font-semibold' : 'hover:bg-gray-50 hover:text-gray-900'}`}><BarChart size={18} /> Analytique (KPI)</button>
-           <button onClick={() => setActiveTab('opportunites')} className={`flex items-center gap-4 w-full p-3 rounded-lg transition-all ${activeTab === 'opportunites' ? 'bg-gray-100 text-gray-900 font-semibold' : 'hover:bg-gray-50 hover:text-gray-900'}`}><Target size={18} /> Opportunités</button>
-           <button onClick={() => setActiveTab('contrats_finis')} className={`flex items-center gap-4 w-full p-3 rounded-lg transition-all ${activeTab === 'contrats_finis' ? 'bg-gray-100 text-gray-900 font-semibold' : 'hover:bg-gray-50 hover:text-gray-900'}`}><CheckCircle size={18} /> Contrats Finis</button>
+        <nav className="flex-1 space-y-1.5 font-medium text-sm text-slate-600">
+           <button onClick={() => setActiveTab('home')} className={`flex items-center gap-3 w-full p-3 rounded-xl transition-all ${activeTab === 'home' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'hover:bg-slate-50 hover:text-slate-900'}`}><LayoutDashboard size={18} strokeWidth={activeTab === 'home' ? 2.5 : 2} /> Accueil</button>
+           <button onClick={() => setActiveTab('messagerie')} className={`flex items-center gap-3 w-full p-3 rounded-xl transition-all ${activeTab === 'messagerie' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'hover:bg-slate-50 hover:text-slate-900'}`}><Inbox size={18} strokeWidth={activeTab === 'messagerie' ? 2.5 : 2} /> Messagerie</button>
+           <button onClick={() => setActiveTab('finance')} className={`flex items-center gap-3 w-full p-3 rounded-xl transition-all ${activeTab === 'finance' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'hover:bg-slate-50 hover:text-slate-900'}`}><Wallet size={18} strokeWidth={activeTab === 'finance' ? 2.5 : 2} /> Finance</button>
+           <button onClick={() => setActiveTab('vivier')} className={`flex items-center gap-3 w-full p-3 rounded-xl transition-all ${activeTab === 'vivier' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'hover:bg-slate-50 hover:text-slate-900'}`}><Component size={18} strokeWidth={activeTab === 'vivier' ? 2.5 : 2} /> Kanban Vivier</button>
+           <button onClick={() => setActiveTab('analytique')} className={`flex items-center gap-3 w-full p-3 rounded-xl transition-all ${activeTab === 'analytique' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'hover:bg-slate-50 hover:text-slate-900'}`}><BarChart size={18} strokeWidth={activeTab === 'analytique' ? 2.5 : 2} /> Analytique (KPI)</button>
+           <button onClick={() => setActiveTab('opportunites')} className={`flex items-center gap-3 w-full p-3 rounded-xl transition-all ${activeTab === 'opportunites' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'hover:bg-slate-50 hover:text-slate-900'}`}><Target size={18} strokeWidth={activeTab === 'opportunites' ? 2.5 : 2} /> Opportunités</button>
+           <button onClick={() => setActiveTab('contrats_finis')} className={`flex items-center gap-3 w-full p-3 rounded-xl transition-all ${activeTab === 'contrats_finis' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'hover:bg-slate-50 hover:text-slate-900'}`}><CheckCircle size={18} strokeWidth={activeTab === 'contrats_finis' ? 2.5 : 2} /> Contrats Finis</button>
            
-           <div className="h-px bg-gray-200 my-6" />
-           <p className="text-xs font-semibold text-gray-400 tracking-wider pl-3 mb-2 uppercase">Recherches</p>
-           <button onClick={() => setActiveTab('search_freelances')} className={`flex items-center gap-4 w-full p-3 rounded-lg transition-all ${activeTab === 'search_freelances' ? 'bg-blue-50 text-blue-700 font-semibold' : 'hover:bg-gray-50 hover:text-gray-900'}`}><Search size={18} /> Freelances</button>
-           <button onClick={() => setActiveTab('search_companies')} className={`flex items-center gap-4 w-full p-3 rounded-lg transition-all ${activeTab === 'search_companies' ? 'bg-blue-50 text-blue-700 font-semibold' : 'hover:bg-gray-50 hover:text-gray-900'}`}><Building size={18} /> Entreprises</button>
+           <div className="h-px bg-slate-200 my-6" />
+           <p className="text-[11px] font-bold text-slate-400 tracking-wider pl-3 mb-3 uppercase">Recherches</p>
+           <button onClick={() => setActiveTab('search_freelances')} className={`flex items-center gap-3 w-full p-3 rounded-xl transition-all ${activeTab === 'search_freelances' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'hover:bg-slate-50 hover:text-slate-900'}`}><Search size={18} strokeWidth={activeTab === 'search_freelances' ? 2.5 : 2} /> Freelances</button>
+           <button onClick={() => setActiveTab('search_companies')} className={`flex items-center gap-3 w-full p-3 rounded-xl transition-all ${activeTab === 'search_companies' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'hover:bg-slate-50 hover:text-slate-900'}`}><Building size={18} strokeWidth={activeTab === 'search_companies' ? 2.5 : 2} /> Entreprises</button>
         </nav>
 
-        <div className="pt-6 border-t-[1.5px] border-gray-200 space-y-4">
-           <div className="p-4 bg-gray-50 border-[1.5px] border-gray-200 rounded-xl flex items-center gap-4 shadow-sm">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden shrink-0 border-[1.5px] border-gray-200">
+        <div className="pt-6 border-t border-slate-200 space-y-4">
+           <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex items-center gap-4 shadow-sm">
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center overflow-hidden shrink-0 border border-slate-200">
                 <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.firstName || 'Marc'}`} alt="avatar" />
               </div>
               <div className="overflow-hidden">
-                <p className="text-sm font-semibold truncate text-gray-900">{user?.firstName || 'Marc'} {user?.lastName}</p>
-                <p className="text-xs text-gray-500 mt-0.5">Apporteur d'Affaires</p>
+                <p className="text-sm font-bold truncate text-slate-900">{user?.firstName || 'Marc'} {user?.lastName}</p>
+                <p className="text-xs font-medium text-slate-500 mt-0.5 truncate">Apporteur d'Affaires</p>
               </div>
            </div>
-           <button onClick={onLogout} className="w-full font-medium text-sm text-gray-500 flex items-center justify-center gap-2 py-2.5 hover:bg-gray-100 hover:text-gray-900 rounded-lg transition-colors">
-             <LogOut size={16} /> Déconnexion
+           <button onClick={onLogout} className="w-full font-medium text-sm text-slate-500 flex items-center justify-center gap-2 py-3 hover:bg-slate-100 hover:text-slate-900 rounded-xl transition-colors">
+             <LogOut size={16} strokeWidth={2} /> Déconnexion
            </button>
         </div>
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8 md:p-12 overflow-y-auto w-full bg-[#F8F7F5]">
+      <main className="flex-1 p-8 md:p-12 overflow-y-auto w-full bg-slate-50/50">
         <div className="max-w-6xl mx-auto space-y-12">
-           <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b-[1.5px] border-gray-200 pb-8">
+           <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-slate-200 pb-8">
               <div className="space-y-2">
-                 <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-none">Hello, <span className="text-[#FBC02D]">{user?.firstName || 'Marc'}</span></h2>
-                 <p className="font-medium text-gray-500 text-sm">Dashboard Apporteur d'Affaires • Connecteur de Talents</p>
+                 <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-none">Hello, <span className="text-indigo-600">{user?.firstName || 'Marc'}</span></h2>
+                 <p className="font-medium text-slate-500 text-sm">Dashboard Apporteur d'Affaires • Connecteur de Talents</p>
               </div>
               <div className="flex gap-4">
-                <SoftButton variant="white" className="rounded-xl shadow-sm px-5 py-2.5 border-gray-200" onClick={() => setActiveTab('search_companies')}><Building size={18} className="mr-2 inline" /> Entreprises</SoftButton>
-                <SoftButton variant="black" className="rounded-xl px-6 py-2.5 shadow-sm" onClick={() => setActiveTab('search_freelances')}><Search size={18} className="mr-2 inline" /> Chercher des talents</SoftButton>
+                <SoftButton variant="white" className="rounded-xl shadow-sm px-5 py-2.5 border-slate-200" onClick={() => setActiveTab('search_companies')}><Building size={18} className="mr-2 inline" strokeWidth={2} /> Entreprises</SoftButton>
+                <SoftButton variant="blue" className="rounded-xl px-6 py-2.5 shadow-sm" onClick={() => setActiveTab('search_freelances')}><Search size={18} className="mr-2 inline" strokeWidth={2} /> Chercher des talents</SoftButton>
               </div>
            </header>
 
            {activeTab === 'home' && (
              <div className="space-y-10 animate-in fade-in duration-500">
                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <SoftCard title="Vivier" color="purple" icon={Users}>
-                     <p className="text-4xl font-bold text-gray-900">{freelances.length}</p>
-                     <p className="text-sm font-medium text-gray-500 mt-2">Talents qualifiés</p>
+                  <SoftCard title="Vivier" color="purple" icon={Users} className="bg-indigo-50/50 border border-indigo-100">
+                     <p className="text-4xl font-bold text-slate-900">{freelances.length}</p>
+                     <p className="text-sm font-medium text-slate-500 mt-2">Talents qualifiés</p>
                   </SoftCard>
-                  <SoftCard title="Commissions Futures" color="yellow" icon={Wallet}>
-                     <p className="text-4xl font-bold text-gray-900">14 500 €</p>
-                     <p className="text-sm font-medium text-yellow-700 mt-2">Escrow Sécurisé en attente</p>
+                  <SoftCard title="Commissions Futures" color="yellow" icon={Wallet} className="bg-emerald-50/50 border border-emerald-100">
+                     <p className="text-4xl font-bold text-slate-900">14 500 €</p>
+                     <p className="text-sm font-medium text-emerald-700 mt-2">Escrow Sécurisé en attente</p>
                   </SoftCard>
-                  <SoftCard title="Messages En Attente" color="blue" icon={MessageSquare}>
-                     <p className="text-4xl font-bold text-gray-900">{inbox.length}</p>
-                     <p className="text-sm font-medium text-gray-500 mt-2">Discussions actives</p>
+                  <SoftCard title="Messages En Attente" color="blue" icon={MessageSquare} className="bg-sky-50/50 border border-sky-100">
+                     <p className="text-4xl font-bold text-slate-900">{inbox.length}</p>
+                     <p className="text-sm font-medium text-slate-500 mt-2">Discussions actives</p>
                   </SoftCard>
                </div>
                
-               <SoftCard title="Opportunité Récente" color="white">
+               <SoftCard title="Opportunité Récente" color="white" className="border border-slate-200">
                  {opportunities.filter(o => o.status === 'open').length > 0 ? (
                    opportunities.filter(o => o.status === 'open').slice(0, 1).map(opp => (
-                     <div key={opp.id} className="border-[1.5px] border-gray-200 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 hover:bg-gray-50 cursor-pointer shadow-sm transition-colors">
+                     <div key={opp.id} className="border border-slate-200 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 hover:bg-slate-50 hover:border-indigo-200 cursor-pointer shadow-sm transition-all group">
                         <div className="flex gap-6 items-center flex-1">
-                          <div className="w-14 h-14 rounded-xl bg-blue-50/50 border-[1.5px] border-blue-100 flex items-center justify-center">
-                            <Zap size={24} className="text-blue-500" />
+                          <div className="w-14 h-14 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                            <Zap size={24} className="text-indigo-600" strokeWidth={2.5} />
                           </div>
                           <div>
-                            <h4 className="font-bold text-xl text-gray-900">{opp.title}</h4>
-                            <p className="font-medium text-gray-500 text-sm mt-1">{opp.company} • Budget: {opp.budget} € • {opp.resources}</p>
+                            <h4 className="font-bold text-xl text-slate-900 group-hover:text-indigo-600 transition-colors">{opp.title}</h4>
+                            <p className="font-medium text-slate-500 text-sm mt-1">{opp.company} • Budget: <span className="text-slate-700 font-semibold">{opp.budget} €</span> • {opp.resources}</p>
                           </div>
                         </div>
-                        <SoftButton variant="yellow" className="px-6 rounded-lg" onClick={() => openTeamBuilder(opp)}>Team Builder <Zap size={16} className="ml-1 inline" /></SoftButton>
+                        <SoftButton variant="blue" className="px-6 rounded-xl shadow-sm" onClick={() => openTeamBuilder(opp)}>Team Builder <Zap size={16} className="ml-1 inline" strokeWidth={2} /></SoftButton>
                      </div>
                    ))
                  ) : (
-                   <p className="font-medium text-gray-500 text-center">Aucune nouvelle opportunité ouverte.</p>
+                   <div className="p-8 text-center border border-slate-200 border-dashed rounded-2xl bg-slate-50/50">
+                     <p className="font-medium text-slate-500 italic">Aucune nouvelle opportunité ouverte.</p>
+                   </div>
                  )}
                </SoftCard>
              </div>
@@ -455,24 +459,24 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
 
            {activeTab === 'analytique' && (
              <div className="space-y-8 animate-in slide-in-from-right-10 duration-500">
-               <h3 className="text-3xl font-bold tracking-tight text-gray-900">Analytique & KPIs</h3>
+               <h3 className="text-3xl font-bold tracking-tight text-slate-900">Analytique & KPIs</h3>
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                 <SoftCard title="Taux de Conversion" color="blue" icon={Activity}>
-                   <p className="text-4xl font-bold text-gray-900">68%</p>
+                 <SoftCard title="Taux de Conversion" color="blue" icon={Activity} className="border border-slate-200">
+                   <p className="text-4xl font-bold text-slate-900">68%</p>
                  </SoftCard>
-                 <SoftCard title="Missions Actives" color="green" icon={Briefcase}>
-                   <p className="text-4xl font-bold text-gray-900">12</p>
+                 <SoftCard title="Missions Actives" color="green" icon={Briefcase} className="border border-slate-200">
+                   <p className="text-4xl font-bold text-slate-900">12</p>
                  </SoftCard>
-                 <SoftCard title="Commissions" color="yellow" icon={Wallet}>
-                   <p className="text-4xl font-bold text-gray-900">14.5k€</p>
+                 <SoftCard title="Commissions" color="yellow" icon={Wallet} className="border border-slate-200">
+                   <p className="text-4xl font-bold text-slate-900">14.5k€</p>
                  </SoftCard>
-                 <SoftCard title="Vivier" color="purple" icon={Users}>
-                   <p className="text-4xl font-bold text-gray-900">{freelances.length}</p>
+                 <SoftCard title="Vivier" color="purple" icon={Users} className="border border-slate-200">
+                   <p className="text-4xl font-bold text-slate-900">{freelances.length}</p>
                  </SoftCard>
                </div>
-               <SoftCard title="Performance Mensuelle">
-                 <div className="h-64 flex items-center justify-center border-[1.5px] border-dashed border-gray-300 rounded-2xl bg-gray-50/50">
-                   <p className="font-semibold text-gray-400">Graphique de performance (Mockup)</p>
+               <SoftCard title="Performance Mensuelle" className="border border-slate-200">
+                 <div className="h-64 flex items-center justify-center border border-dashed border-slate-300 rounded-2xl bg-slate-50/50">
+                   <p className="font-semibold text-slate-400">Graphique de performance (Mockup)</p>
                  </div>
                </SoftCard>
              </div>
@@ -480,72 +484,72 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
 
            {activeTab === 'messagerie' && (
              <div className="space-y-8 animate-in fade-in duration-500">
-               <h3 className="text-3xl font-bold tracking-tight text-gray-900">Messagerie (Inbox)</h3>
-               <p className="font-medium text-gray-500 mb-8">Retrouvez toutes vos conversations de prospection et de chantiers en cours.</p>
+               <h3 className="text-3xl font-bold tracking-tight text-slate-900">Messagerie (Inbox)</h3>
+               <p className="font-medium text-slate-500 mb-8">Retrouvez toutes vos conversations de prospection et de chantiers en cours.</p>
                
                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                  {/* DMs Entreprises */}
                  <div className="space-y-4">
-                   <h4 className="font-semibold text-sm border-b-[1.5px] border-gray-200 pb-2 text-blue-600">🏢 Prospection Entreprises</h4>
+                   <h4 className="font-semibold text-sm border-b border-slate-200 pb-2 text-indigo-600">🏢 Prospection Entreprises</h4>
                    {inbox.filter(c => c.type === 'dm_company').length > 0 ? inbox.filter(c => c.type === 'dm_company').map(c => (
-                     <div key={c.id} className="bg-white border-[1.5px] border-gray-200 p-4 rounded-xl cursor-pointer hover:border-gray-300 hover:shadow-sm transition-all" onClick={() => openChatFromInbox(c)}>
+                     <div key={c.id} className="bg-white border border-slate-200 p-4 rounded-xl cursor-pointer hover:border-indigo-300 hover:shadow-sm transition-all group" onClick={() => openChatFromInbox(c)}>
                        <div className="flex items-center gap-3">
-                         <div className="w-10 h-10 border-[1.5px] border-gray-200 rounded-full overflow-hidden shrink-0"><img src={`https://api.dicebear.com/7.x/shapes/svg?seed=${c.avatar}`} /></div>
+                         <div className="w-10 h-10 border border-slate-200 rounded-full overflow-hidden shrink-0 group-hover:scale-105 transition-transform"><img src={`https://api.dicebear.com/7.x/shapes/svg?seed=${c.avatar}`} alt="Avatar" /></div>
                          <div className="overflow-hidden">
-                           <p className="font-bold text-gray-900 truncate text-sm">{c.company}</p>
-                           <p className="text-xs font-medium text-gray-500 truncate">{c.title}</p>
+                           <p className="font-bold text-slate-900 truncate text-sm">{c.company}</p>
+                           <p className="text-xs font-medium text-slate-500 truncate">{c.title}</p>
                          </div>
                        </div>
                      </div>
-                   )) : <p className="text-xs font-medium text-gray-400 italic">Aucun DM envoyé.</p>}
+                   )) : <p className="text-xs font-medium text-slate-400 italic p-4 text-center border border-slate-200 border-dashed rounded-xl bg-slate-50">Aucun DM envoyé.</p>}
                  </div>
 
                  {/* Demandes de représentation (Nouvelles) */}
                  <div className="space-y-4">
-                   <h4 className="font-semibold text-sm border-b-[1.5px] border-gray-200 pb-2 text-orange-600">⏳ Nouvelles Demandes</h4>
+                   <h4 className="font-semibold text-sm border-b border-slate-200 pb-2 text-rose-600">⏳ Nouvelles Demandes</h4>
                    {inbox.filter(c => c.type === 'dm_freelance' && !freelances.find(f => f.name === c.freelance)).length > 0 ? inbox.filter(c => c.type === 'dm_freelance' && !freelances.find(f => f.name === c.freelance)).map(c => (
-                     <div key={c.id} className="bg-orange-50/50 border-[1.5px] border-orange-200 p-4 rounded-xl cursor-pointer hover:border-orange-300 hover:shadow-sm transition-all" onClick={() => openChatFromInbox(c)}>
+                     <div key={c.id} className="bg-rose-50/50 border border-rose-200 p-4 rounded-xl cursor-pointer hover:bg-rose-50 hover:border-rose-300 hover:shadow-sm transition-all group" onClick={() => openChatFromInbox(c)}>
                        <div className="flex items-center gap-3">
-                         <div className="w-10 h-10 border-[1.5px] border-orange-300 rounded-full overflow-hidden shrink-0 bg-orange-100 flex items-center justify-center font-bold text-orange-600">!</div>
+                         <div className="w-10 h-10 border border-rose-200 rounded-full overflow-hidden shrink-0 bg-white flex items-center justify-center font-bold text-rose-600 group-hover:scale-105 transition-transform">!</div>
                          <div className="overflow-hidden">
-                           <p className="font-bold text-gray-900 truncate text-sm">{c.freelance}</p>
-                           <p className="text-[10px] font-semibold text-gray-500 uppercase truncate">Contact Entrant</p>
+                           <p className="font-bold text-slate-900 truncate text-sm">{c.freelance}</p>
+                           <p className="text-[10px] font-semibold text-rose-600 uppercase truncate">Contact Entrant</p>
                          </div>
                        </div>
                      </div>
-                   )) : <p className="text-[10px] font-semibold text-gray-400 italic">Aucune demande en attente.</p>}
+                   )) : <p className="text-[10px] font-semibold text-slate-400 italic p-4 text-center border border-slate-200 border-dashed rounded-xl bg-slate-50">Aucune demande en attente.</p>}
                  </div>
 
                  {/* DMs Freelances (Validés) */}
                  <div className="space-y-4">
-                   <h4 className="font-semibold text-sm border-b-[1.5px] border-gray-200 pb-2 text-purple-600">⚡️ Échanges Vivier</h4>
+                   <h4 className="font-semibold text-sm border-b border-slate-200 pb-2 text-purple-600">⚡️ Échanges Vivier</h4>
                    {inbox.filter(c => c.type === 'dm_freelance' && freelances.find(f => f.name === c.freelance)).length > 0 ? inbox.filter(c => c.type === 'dm_freelance' && freelances.find(f => f.name === c.freelance)).map(c => (
-                     <div key={c.id} className="bg-white border-[1.5px] border-gray-200 p-4 rounded-xl cursor-pointer hover:border-gray-300 hover:shadow-sm transition-all" onClick={() => openChatFromInbox(c)}>
+                     <div key={c.id} className="bg-white border border-slate-200 p-4 rounded-xl cursor-pointer hover:border-purple-200 hover:shadow-sm transition-all group" onClick={() => openChatFromInbox(c)}>
                        <div className="flex items-center gap-3">
-                         <div className="w-10 h-10 bg-green-50 border-[1.5px] border-green-200 rounded-full overflow-hidden shrink-0"><img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${c.avatar}`} /></div>
+                         <div className="w-10 h-10 bg-indigo-50 border border-indigo-100 rounded-full overflow-hidden shrink-0 group-hover:scale-105 transition-transform"><img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${c.avatar}`} alt="Avatar" /></div>
                          <div className="overflow-hidden">
-                           <p className="font-bold text-gray-900 truncate text-sm">{c.freelance}</p>
-                           <p className="text-[10px] font-medium text-gray-500 uppercase truncate">{c.role}</p>
+                           <p className="font-bold text-slate-900 truncate text-sm">{c.freelance}</p>
+                           <p className="text-[10px] font-medium text-slate-500 uppercase truncate">{c.role}</p>
                          </div>
                        </div>
                      </div>
-                   )) : <p className="text-[10px] font-medium text-gray-400 italic">Aucun DM avec votre vivier.</p>}
+                   )) : <p className="text-[10px] font-medium text-slate-400 italic p-4 text-center border border-slate-200 border-dashed rounded-xl bg-slate-50">Aucun DM avec votre vivier.</p>}
                  </div>
 
                  {/* Project Chats */}
-                 <div className="space-y-4">
-                   <h4 className="font-semibold text-sm border-b-[1.5px] border-gray-200 pb-2 text-green-600">🛠 Chantiers en cours</h4>
+                 <div className="space-y-4 md:col-span-3 lg:col-span-1">
+                   <h4 className="font-semibold text-sm border-b border-slate-200 pb-2 text-emerald-600">🛠 Chantiers en cours</h4>
                    {inbox.filter(c => c.type === 'project').length > 0 ? inbox.filter(c => c.type === 'project').map(c => (
-                     <div key={c.id} className="bg-green-50/50 border-[1.5px] border-green-200 p-4 rounded-xl cursor-pointer hover:border-green-300 hover:shadow-sm transition-all" onClick={() => openChatFromInbox(c)}>
+                     <div key={c.id} className="bg-emerald-50/50 border border-emerald-200 p-4 rounded-xl cursor-pointer hover:bg-emerald-50 hover:shadow-sm transition-all group" onClick={() => openChatFromInbox(c)}>
                        <div className="flex items-center gap-3">
-                         <div className="w-10 h-10 border-[1.5px] border-gray-200 bg-white rounded-full overflow-hidden flex items-center justify-center shrink-0"><MessageSquare size={16} className="text-gray-500" /></div>
+                         <div className="w-10 h-10 border border-slate-200 bg-white rounded-full overflow-hidden flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform"><MessageSquare size={16} className="text-slate-500" /></div>
                          <div className="overflow-hidden">
-                           <p className="font-bold text-gray-900 truncate text-sm">{c.title}</p>
-                           <p className="text-xs font-medium text-gray-500 truncate">{c.company} • Équipe matchée</p>
+                           <p className="font-bold text-slate-900 truncate text-sm">{c.title}</p>
+                           <p className="text-xs font-medium text-slate-500 truncate">{c.company} • Équipe matchée</p>
                          </div>
                        </div>
                      </div>
-                   )) : <p className="text-xs font-medium text-gray-400 italic">Aucun chantier en cours.</p>}
+                   )) : <p className="text-xs font-medium text-slate-400 italic p-4 text-center border border-slate-200 border-dashed rounded-xl bg-slate-50">Aucun chantier en cours.</p>}
                  </div>
                </div>
              </div>
@@ -553,38 +557,38 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
 
            {activeTab === 'opportunites' && (
              <div className="space-y-8 animate-in fade-in duration-500">
-                <h3 className="text-3xl font-bold tracking-tight text-gray-900">Opportunités (Marché & Acceptées)</h3>
+                <h3 className="text-3xl font-bold tracking-tight text-slate-900">Opportunités (Marché & Acceptées)</h3>
                 
                 <div className="space-y-6">
                   {opportunities.map(opp => (
-                    <SoftCard key={opp.id} className={`transition-colors ${opp.status === 'matched' ? 'bg-green-50/50 border-dashed border-green-200 text-gray-600' : 'hover:bg-gray-50'}`}>
+                    <SoftCard key={opp.id} className={`transition-all border ${opp.status === 'matched' ? 'bg-emerald-50/50 border-emerald-200' : 'bg-white border-slate-200 hover:border-indigo-200 hover:shadow-sm'} rounded-2xl`}>
                       <div className="flex flex-col md:flex-row flex-wrap items-center justify-between gap-6">
                         <div className="flex gap-6 items-center flex-1 min-w-[300px]">
-                          <div className={`w-14 h-14 rounded-xl border-[1.5px] border-gray-200 flex items-center justify-center shrink-0 ${opp.status === 'matched' ? 'bg-green-100 border-green-300' : 'bg-blue-50/50 border-blue-100'}`}>
-                            {opp.status === 'matched' ? <CheckCircle size={28} className="text-green-600" /> : <Briefcase size={28} className="text-blue-500" />}
+                          <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center shrink-0 ${opp.status === 'matched' ? 'bg-emerald-100 border-emerald-300' : 'bg-indigo-50 border-indigo-100'}`}>
+                            {opp.status === 'matched' ? <CheckCircle size={28} className="text-emerald-600" /> : <Briefcase size={28} className="text-indigo-600" />}
                           </div>
                           <div className="truncate">
-                            <h4 className="font-bold text-xl text-gray-900 truncate">{opp.title}</h4>
-                            <p className="font-medium text-gray-500 text-sm truncate">{opp.company} • Budget: {opp.budget} € • {opp.resources}</p>
+                            <h4 className="font-bold text-xl text-slate-900 truncate">{opp.title}</h4>
+                            <p className="font-medium text-slate-500 text-sm truncate">{opp.company} • Budget: <span className="font-semibold text-slate-700">{opp.budget} €</span> • {opp.resources}</p>
                           </div>
                         </div>
                         {opp.status === 'matched' ? (
                           <div className="flex flex-wrap gap-4 w-full md:w-auto mt-4 md:mt-0 items-center justify-end">
-                            <SoftBadge color="green">Contrats Entamés</SoftBadge>
-                            <SoftButton variant="black" className="rounded-lg px-4 py-2 text-sm shadow-sm" onClick={() => openChatFromOpp(opp)}><MessageSquare size={16} /> Ouvrir Chat</SoftButton>
-                            <SoftButton variant="yellow" className="rounded-lg px-4 py-2 text-sm shadow-sm" onClick={() => handleRequestVerification(opp.id)}><Check size={16} className="mr-1 inline" /> Annoncer Fin de Mission</SoftButton>
+                            <SoftBadge color="green" className="bg-emerald-50 text-emerald-700 border-emerald-200">Contrats Entamés</SoftBadge>
+                            <SoftButton variant="black" className="rounded-xl px-5 py-2.5 text-sm shadow-sm" onClick={() => openChatFromOpp(opp)}><MessageSquare size={16} strokeWidth={2} className="mr-2 inline" /> Ouvrir Chat</SoftButton>
+                            <SoftButton variant="white" className="rounded-xl px-5 py-2.5 text-sm shadow-sm border-slate-200" onClick={() => handleRequestVerification(opp.id)}><Check size={16} strokeWidth={2} className="mr-2 inline" /> Annoncer Fin de Mission</SoftButton>
                           </div>
                         ) : opp.status === 'pending_verification' ? (
                           <div className="flex gap-4 w-full md:w-auto mt-4 md:mt-0 items-center">
-                            <SoftBadge color="yellow">⏳ En cours de vérification par l'Entreprise</SoftBadge>
-                            <SoftButton variant="black" className="rounded-lg px-4 py-2 text-sm shadow-sm" onClick={() => openChatFromOpp(opp)}><MessageSquare size={16} /> Ouvrir Chat</SoftButton>
+                            <SoftBadge color="yellow" className="bg-amber-50 text-amber-700 border-amber-200">⏳ En cours de vérification par l'Entreprise</SoftBadge>
+                            <SoftButton variant="black" className="rounded-xl px-4 py-2 text-sm shadow-sm" onClick={() => openChatFromOpp(opp)}><MessageSquare size={16} strokeWidth={2} className="mr-2 inline" /> Ouvrir Chat</SoftButton>
                           </div>
                         ) : opp.status === 'completed_by_company' ? (
                           <div className="flex gap-4 w-full md:w-auto mt-4 md:mt-0 items-center">
-                            <SoftBadge color="blue">✅ Validé et Payé (Fonds Débloqués)</SoftBadge>
+                            <SoftBadge color="blue" className="bg-indigo-50 text-indigo-700 border-indigo-200">✅ Validé et Payé (Fonds Débloqués)</SoftBadge>
                           </div>
                         ) : (
-                          <SoftButton variant="yellow" className="px-6 rounded-lg" onClick={() => openTeamBuilder(opp)}>Matcher ce besoin</SoftButton>
+                          <SoftButton variant="blue" className="px-6 py-3 rounded-xl shadow-sm" onClick={() => openTeamBuilder(opp)}>Matcher ce besoin</SoftButton>
                         )}
                       </div>
                     </SoftCard>
@@ -595,37 +599,43 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
 
            {activeTab === 'chat' && activeChat && (
              <div className="space-y-6 animate-in slide-in-from-bottom-10 duration-500">
-                <button onClick={() => setActiveTab('messagerie')} className="font-semibold text-sm text-gray-500 hover:text-gray-900 mb-4 flex items-center gap-2 transition-colors"><ChevronRight className="rotate-180" size={18}/> Retour à la messagerie</button>
-                <div className="bg-white border-[1.5px] border-gray-200 rounded-3xl shadow-lg overflow-hidden flex flex-col h-[600px]">
-                   <header className="bg-gray-900 text-white p-6 flex justify-between items-center z-10 border-b-[1.5px] border-gray-800">
-                     <div className="overflow-hidden">
-                       <h3 className="text-xl md:text-2xl font-bold truncate">{activeChat.title || activeChat.freelance}</h3>
-                       <p className="font-medium text-gray-400 text-sm truncate mt-1">
-                         {activeChat.type === 'dm_company' && 'Prospection Entreprise'}
-                         {activeChat.type === 'dm_freelance' && 'Direct Message Talent'}
-                         {activeChat.type === 'project' && 'Communication de Chantier'}
-                         {activeChat.company ? ` • ${activeChat.company}` : ''}
-                       </p>
+                <button onClick={() => setActiveTab('messagerie')} className="font-semibold text-sm text-slate-500 hover:text-slate-900 mb-4 flex items-center gap-2 transition-colors"><ChevronRight className="rotate-180" size={18}/> Retour à la messagerie</button>
+                <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden flex flex-col h-[600px] xl:h-[700px]">
+                   <header className="bg-white border-b border-slate-200 px-6 py-4 md:px-8 flex justify-between items-center z-10 shrink-0">
+                     <div className="overflow-hidden flex items-center gap-4">
+                       <div className="w-12 h-12 bg-slate-50 border border-slate-200 rounded-full flex items-center justify-center shrink-0 overflow-hidden">
+                          {activeChat.type === 'project' ? <MessageSquare size={20} className="text-slate-400" /> : <img src={`https://api.dicebear.com/7.x/${activeChat.type === 'dm_company' ? 'shapes' : 'avataaars'}/svg?seed=${activeChat.avatar || 12}`} alt="avatar" className="w-full h-full object-cover" />}
+                       </div>
+                       <div>
+                         <h3 className="text-xl font-bold text-slate-900 truncate flex items-center gap-2">
+                           {activeChat.title || activeChat.freelance}
+                         </h3>
+                         <p className="font-medium text-slate-500 text-sm truncate">
+                           {activeChat.type === 'dm_company' && 'Prospection Entreprise'}
+                           {activeChat.type === 'dm_freelance' && 'Direct Message Talent'}
+                           {activeChat.type === 'project' && 'Communication de Chantier'}
+                           {activeChat.company ? ` • ${activeChat.company}` : ''}
+                         </p>
+                       </div>
                      </div>
-                     <MessageSquare size={32} className="text-blue-400 shrink-0 ml-4" strokeWidth={2} />
                    </header>
                    
-                   <div className="bg-blue-50/80 p-3 text-center border-b-[1.5px] border-blue-100 font-semibold text-xs text-blue-700">
+                   <div className="bg-slate-50 py-2.5 text-center border-b border-slate-100 font-medium text-xs text-slate-500 tracking-wide uppercase shrink-0">
                      Participants: Vous (Marc)
                      {activeChat.type === 'dm_company' || activeChat.type === 'project' ? `, ${activeChat.company}` : ''}
                      {activeChat.type === 'dm_freelance' ? `, ${activeChat.freelance}` : ''}
                      {activeChat.type === 'project' && activeChat.assignedFreelances ? `, ${activeChat.assignedFreelances.map(f => f.name).join(', ')}` : ''}
                    </div>
 
-                   <div className="flex-1 p-6 md:p-8 overflow-y-auto space-y-6 bg-gray-50/50">
+                   <div className="flex-1 p-6 md:p-8 overflow-y-auto space-y-6 bg-slate-50">
                       {/* Banner that pops up if an unknown freelance sends a DM asking for representation */}
                       {activeChat.type === 'dm_freelance' && !freelances.find(f => f.name === activeChat.freelance) && (
-                        <div className="bg-blue-50 border-[1.5px] border-blue-200 rounded-xl p-6 mb-6 shadow-sm animate-in slide-in-from-top-4">
-                          <h4 className="font-bold text-blue-700 mb-2 flex items-center gap-2 text-lg"><Users size={20} /> Nouvelle demande de représentation</h4>
-                          <p className="font-medium text-gray-700 text-sm mb-6">Ce talent vous a contacté depuis l'annuaire de la plateforme et souhaite intégrer votre Kanban Trello.</p>
+                        <div className="bg-indigo-50/80 border border-indigo-100 rounded-2xl p-6 mb-6 shadow-sm animate-in slide-in-from-top-4">
+                          <h4 className="font-bold text-indigo-900 mb-2 flex items-center gap-2 text-lg"><Users size={20} /> Nouvelle demande de représentation</h4>
+                          <p className="font-medium text-slate-700 text-sm mb-6">Ce talent vous a contacté depuis l'annuaire de la plateforme et souhaite intégrer votre Kanban Trello.</p>
                           <div className="flex flex-wrap gap-3">
-                            <SoftButton variant="black" className="py-2.5 text-xs rounded-lg shadow-sm" onClick={() => setSelectedProfile({ ...activeChat, type: 'freelance', name: activeChat.freelance })}><Search size={14} className="mr-2 inline" /> Voir la Fiche Synapse</SoftButton>
-                            <SoftButton variant="green" className="py-2.5 text-xs rounded-lg shadow-sm" onClick={() => {
+                            <SoftButton variant="white" className="py-2.5 text-xs rounded-xl shadow-sm border-slate-200" onClick={() => setSelectedProfile({ ...activeChat, type: 'freelance', name: activeChat.freelance })}><Search size={14} className="mr-2 inline" /> Voir la Fiche Synapse</SoftButton>
+                            <SoftButton variant="black" className="py-2.5 text-xs rounded-xl shadow-sm" onClick={() => {
                               const newTalent = {
                                 id: Date.now(),
                                 name: activeChat.freelance,
@@ -649,7 +659,7 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
                               setInbox(inbox.map(c => c.id === activeChat.id ? updatedChat : c));
                               showAlert("🎉 Talent accepté ! Il se trouve désormais dans votre colonne 'À Contacter' du Kanban.", "success");
                             }}><Check size={14} className="mr-2 inline" /> Accepter le Profil</SoftButton>
-                            <button className="py-2.5 px-4 text-xs font-semibold text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors border-[1.5px] border-transparent hover:border-red-200 flex items-center" onClick={() => {
+                            <button className="py-2.5 px-4 text-xs font-semibold text-slate-500 hover:text-red-700 hover:bg-red-50 rounded-xl transition-colors flex items-center" onClick={() => {
                               const msg = { text: "❌ Bonjour. Malheureusement, mon emploi du temps est plein et je ne peux plus prendre de suivi. Bonne continuation !", sender: 'Moi (Apporteur)', time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) };
                               const updatedChat = { ...activeChat, messages: [...activeChat.messages, msg] };
                               setActiveChat(updatedChat);
@@ -660,41 +670,43 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
                       )}
 
                       {activeChat.messages && activeChat.messages.length > 0 ? (
-                         <div className="space-y-4">
+                         <div className="space-y-6">
                            {activeChat.messages.map((msg, i) => (
-                             <div key={i} className={`flex gap-3 ${msg.sender === 'Moi (Apporteur)' ? 'justify-end' : ''}`}>
+                             <div key={i} className={`flex gap-4 ${msg.sender === 'Moi (Apporteur)' ? 'justify-end' : ''}`}>
                                {msg.sender !== 'Moi (Apporteur)' && (
-                                 <div className={`w-8 h-8 border-[1.5px] border-gray-200 rounded-full overflow-hidden shrink-0 mt-1 ${msg.isFreelance ? 'bg-green-50' : 'bg-white'}`}>
+                                 <div className={`w-10 h-10 border border-slate-200 rounded-full overflow-hidden shrink-0 bg-white shadow-sm`}>
                                    <img src={`https://api.dicebear.com/7.x/${msg.isFreelance ? 'avataaars' : 'shapes'}/svg?seed=${msg.avatar || 50}`} alt={msg.sender} className="w-full h-full object-cover" />
                                  </div>
                                )}
-                               <div className={`${msg.sender === 'Moi (Apporteur)' ? 'bg-blue-600 text-white' : (msg.isFreelance ? 'bg-purple-50 border-[1.5px] border-purple-100 text-gray-900' : 'bg-white border-[1.5px] border-gray-200 text-gray-900')} p-4 rounded-2xl ${msg.sender === 'Moi (Apporteur)' ? 'rounded-tr-sm' : 'rounded-tl-sm'} max-w-[80%] shadow-sm`}>
-                                 <p className="font-medium whitespace-pre-line text-[15px]">{msg.text}</p>
-                                 <span className={`text-[11px] font-medium mt-2 block ${msg.sender === 'Moi (Apporteur)' ? 'text-blue-100' : 'text-gray-400'}`}>{msg.sender} • {msg.time}</span>
+                               <div className={`${msg.sender === 'Moi (Apporteur)' ? 'bg-indigo-600 text-white' : 'bg-white border border-slate-200'} p-4 rounded-2xl ${msg.sender === 'Moi (Apporteur)' ? 'rounded-br-sm' : 'rounded-bl-sm'} max-w-[85%] md:max-w-[75%] shadow-sm`}>
+                                 <p className={`font-medium whitespace-pre-line leading-relaxed ${msg.sender === 'Moi (Apporteur)' ? 'text-white' : 'text-slate-800'}`}>{msg.text}</p>
+                                 <span className={`text-[10px] font-semibold uppercase mt-2 block ${msg.sender === 'Moi (Apporteur)' ? 'text-indigo-200' : 'text-slate-400'}`}>{msg.sender} • {msg.time}</span>
                                </div>
                              </div>
                            ))}
                          </div>
                       ) : (
                         <div className="h-full flex items-center justify-center flex-col text-center opacity-70">
-                          <MessageSquare size={40} className="mb-4 text-gray-300" strokeWidth={1.5} />
-                          <p className="font-bold text-gray-500 text-lg">Nouvelle discussion</p>
-                          <p className="text-sm font-medium text-gray-400 mt-2">Envoyez le message pré-rempli pour entamer la discussion.</p>
+                          <div className="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mb-4 border border-slate-200">
+                            <MessageSquare size={32} />
+                          </div>
+                          <p className="font-bold text-slate-500 text-lg">Nouvelle discussion</p>
+                          <p className="text-sm font-medium text-slate-400 mt-2">Envoyez le message pré-rempli pour entamer la discussion.</p>
                         </div>
                       )}
                    </div>
 
-                   <footer className="p-4 border-t-[1.5px] border-gray-200 bg-white flex gap-3">
+                   <footer className="p-5 border-t border-slate-200 bg-white flex gap-3 shrink-0 items-center">
                       <input 
                          placeholder="Écrire un message..." 
-                         className="w-full flex-1 border-[1.5px] border-gray-200 rounded-xl px-4 py-3 font-medium outline-none focus:border-blue-500 focus:ring-2 ring-blue-50 transition-all bg-gray-50 hover:bg-white" 
+                         className="w-full flex-1 border border-slate-200 rounded-xl px-5 py-3.5 font-medium placeholder:text-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-2 ring-indigo-100 transition-all bg-slate-50 hover:bg-white" 
                          value={chatInput} 
                          onChange={(e) => setChatInput(e.target.value)}
                          onKeyDown={(e) => { if (e.key === 'Enter') handleSendMessage(); }}
                       />
                       <SoftButton 
                          variant="blue" 
-                         className="px-6 shadow-sm rounded-xl py-0" 
+                         className="px-6 py-3.5 rounded-xl shadow-sm h-full flex items-center justify-center" 
                          onClick={handleSendMessage}
                       >
                          <Send size={18} />
@@ -706,41 +718,41 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
 
            {activeTab === 'finance' && (
              <div className="space-y-8 animate-in slide-in-from-right-10 duration-500">
-               <h3 className="text-3xl font-bold tracking-tight text-gray-900">Finance & Escrow</h3>
-               <p className="font-medium text-gray-500 mb-8">Consultez les fonds bloqués pour vos équipes et vos commissions perçues.</p>
+               <h3 className="text-3xl font-bold tracking-tight text-slate-900">Finance & Escrow</h3>
+               <p className="font-medium text-slate-500 mb-8">Consultez les fonds bloqués pour vos équipes et vos commissions perçues.</p>
                
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                 <SoftCard title="Fonds Tiers (En Escrow)" color="yellow" className="!bg-[#FFFDE7]">
-                   <p className="text-4xl font-bold text-gray-900">6 500 €</p>
-                   <p className="text-sm font-medium mt-2 text-yellow-700">Sécurisés en attente de clôture (Entreprise)</p>
+                 <SoftCard title="Fonds Tiers (En Escrow)" color="yellow" className="bg-amber-50/50 border border-amber-200">
+                   <p className="text-4xl font-bold text-slate-900">6 500 €</p>
+                   <p className="text-sm font-semibold mt-2 text-amber-700">Sécurisés en attente de clôture (Entreprise)</p>
                  </SoftCard>
-                 <SoftCard title="Commissions Net (Débloquées)" color="green" className="!bg-green-50/50">
-                   <p className="text-4xl font-bold text-gray-900">14 500 €</p>
-                   <p className="text-sm font-medium mt-2 text-green-700">Revenus générés via Synapse</p>
+                 <SoftCard title="Commissions Net (Débloquées)" color="green" className="bg-emerald-50/50 border border-emerald-200">
+                   <p className="text-4xl font-bold text-slate-900">14 500 €</p>
+                   <p className="text-sm font-semibold mt-2 text-emerald-700">Revenus générés via Synapse</p>
                  </SoftCard>
                </div>
 
-               <SoftCard title="Historique récent des Fonds Actifs">
+               <SoftCard title="Historique récent des Fonds Actifs" className="border border-slate-200">
                  <div className="space-y-4">
-                   <div className="border-[1.5px] border-gray-200 rounded-xl p-6 bg-white flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm hover:shadow transition-shadow">
+                   <div className="border border-slate-200 rounded-2xl p-6 bg-white flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm hover:border-indigo-200 transition-all group">
                      <div>
-                       <h4 className="font-bold text-lg text-gray-900">Création Landing Page E-commerce</h4>
-                       <p className="font-medium text-gray-500 mt-1 text-sm">Validation Entreprise effectuée. Équipe technique en mission.</p>
+                       <h4 className="font-bold text-lg text-slate-900 group-hover:text-amber-600 transition-colors">Création Landing Page E-commerce</h4>
+                       <p className="font-medium text-slate-500 mt-1 text-sm">Validation Entreprise effectuée. Équipe technique en mission.</p>
                      </div>
                      <div className="text-right flex flex-col items-end">
-                       <p className="font-bold text-2xl text-yellow-600 mb-2">1 500 €</p>
-                       <SoftBadge color="yellow">Fonds Sécurisés</SoftBadge>
+                       <p className="font-bold text-2xl text-amber-600 mb-2">1 500 €</p>
+                       <SoftBadge color="yellow" className="bg-amber-50 text-amber-700 border-amber-200">Fonds Sécurisés</SoftBadge>
                      </div>
                    </div>
                    {finishedContracts.map(c => (
-                     <div key={c.id} className="border-[1.5px] border-gray-200 border-dashed rounded-xl p-5 bg-gray-50/50 flex flex-col md:flex-row justify-between items-center gap-4 opacity-80">
+                     <div key={c.id} className="border border-slate-200 border-dashed rounded-2xl p-5 bg-slate-50 flex flex-col md:flex-row justify-between items-center gap-4 opacity-75 hover:opacity-100 transition-opacity">
                        <div>
-                         <p className="font-bold text-gray-900">{c.title}</p>
-                         <p className="text-sm font-medium text-gray-500 mt-1">Contrat terminé et avalisé par l'Entreprise ({c.company})</p>
+                         <p className="font-bold text-slate-900">{c.title}</p>
+                         <p className="text-sm font-medium text-slate-500 mt-1">Contrat terminé et avalisé par l'Entreprise ({c.company})</p>
                        </div>
                        <div className="text-right flex flex-col items-end">
-                         <p className="font-bold text-green-600 mb-2 text-xl">{c.budget}</p>
-                         <span className="text-xs font-semibold text-gray-500 bg-white border-[1.5px] border-gray-200 px-2 py-1.5 rounded-md">Commission perçue</span>
+                         <p className="font-bold text-emerald-600 mb-2 text-xl">{c.budget}</p>
+                         <span className="text-xs font-semibold text-slate-500 bg-white border border-slate-200 px-2 py-1.5 rounded-md">Commission perçue</span>
                        </div>
                      </div>
                    ))}
@@ -753,26 +765,26 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
              <div className="space-y-8 animate-in slide-in-from-right-10 duration-500">
                <div className="flex justify-between items-end flex-wrap gap-4">
                  <div>
-                   <h3 className="text-3xl font-bold tracking-tight text-gray-900">Pipelines du Vivier</h3>
-                   <p className="font-medium text-gray-500 mt-1">Gérez vos talents qualifiés dans un espace Kanban.</p>
+                   <h3 className="text-3xl font-bold tracking-tight text-slate-900">Pipelines du Vivier</h3>
+                   <p className="font-medium text-slate-500 mt-1">Gérez vos talents qualifiés dans un espace Kanban.</p>
                  </div>
-                 <SoftButton variant="yellow" className="px-6 py-2.5 shrink-0 rounded-lg shadow-sm" onClick={() => showAlert("Lien de recrutement copié : https://bni.digital/join/apporteur_marcd", "success")}><Link size={18} className="mr-2 inline" /> Inviter Talent (Affiliation)</SoftButton>
+                 <SoftButton variant="blue" className="px-6 py-2.5 shrink-0 rounded-xl shadow-sm" onClick={() => showAlert("Lien de recrutement copié : https://synapse.digital/join/apporteur_marcd", "success")}><Link size={18} className="mr-2 inline" strokeWidth={2} /> Inviter Talent (Affiliation)</SoftButton>
                </div>
                
                <div className="flex flex-col lg:flex-row gap-6 overflow-x-auto pb-8">
                  {['contact', 'nego', 'placed'].map(col => (
-                   <div key={col} className="flex-1 min-w-[320px] bg-gray-50 border-[1.5px] border-gray-200 rounded-2xl flex flex-col max-h-[70vh]">
-                     <div className="p-4 border-b-[1.5px] border-gray-200 bg-white rounded-t-2xl shrink-0">
-                       <h4 className="font-bold text-lg flex items-center gap-2 text-gray-900">
-                         {col === 'contact' && <span className="w-3 h-3 bg-blue-500 rounded-full"/>}
-                         {col === 'nego' && <span className="w-3 h-3 bg-yellow-400 rounded-full"/>}
-                         {col === 'placed' && <span className="w-3 h-3 bg-green-500 rounded-full"/>}
+                   <div key={col} className="flex-1 min-w-[320px] bg-slate-50/80 border border-slate-200 rounded-2xl flex flex-col max-h-[70vh]">
+                     <div className="p-4 border-b border-slate-200 bg-white rounded-t-2xl shrink-0">
+                       <h4 className="font-bold text-lg flex items-center gap-2 text-slate-900">
+                         {col === 'contact' && <span className="w-3 h-3 bg-sky-500 rounded-full shadow-sm"/>}
+                         {col === 'nego' && <span className="w-3 h-3 bg-amber-400 rounded-full shadow-sm"/>}
+                         {col === 'placed' && <span className="w-3 h-3 bg-emerald-500 rounded-full shadow-sm"/>}
                          {col === 'contact' ? 'À Contacter' : col === 'nego' ? 'En Négociation' : 'Mission Placé'} 
-                         <span className="ml-auto text-sm font-medium text-gray-400 bg-gray-100 px-2 py-0.5 rounded-full">{freelances.filter(f => f.pipeline === col).length}</span>
+                         <span className="ml-auto text-sm font-semibold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full">{freelances.filter(f => f.pipeline === col).length}</span>
                        </h4>
                      </div>
                      <div 
-                         className="p-4 overflow-y-auto space-y-4 flex-1 transition-colors hover:bg-gray-100/50"
+                         className="p-4 overflow-y-auto space-y-4 flex-1 transition-colors hover:bg-slate-100/50 rounded-b-2xl"
                          onDragOver={(e) => e.preventDefault()}
                          onDrop={(e) => {
                            e.preventDefault();
@@ -787,27 +799,27 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
                              key={f.id} 
                              draggable
                              onDragStart={(e) => e.dataTransfer.setData('fId', f.id)}
-                             className="bg-white border-[1.5px] border-gray-200 rounded-xl p-4 shadow-sm cursor-grab active:cursor-grabbing hover:shadow hover:-translate-y-0.5 transition-all"
+                             className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm cursor-grab active:cursor-grabbing hover:border-indigo-200 hover:shadow hover:-translate-y-0.5 transition-all group"
                           >
                            <div className="flex justify-between items-start mb-4">
                              <div className="flex items-center gap-3">
-                               <div className="w-10 h-10 bg-blue-50 border-[1.5px] border-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold">{f.initial || f.name.substring(0,2).toUpperCase()}</div>
-                               <div>
-                                 <h5 className="font-bold text-gray-900 leading-tight">{f.name}</h5>
-                                 <p className="text-xs font-medium text-gray-500">{f.role}</p>
+                               <div className="w-10 h-10 bg-indigo-50 border border-indigo-100 text-indigo-700 rounded-full flex items-center justify-center font-bold shrink-0">{f.initial || f.name.substring(0,2).toUpperCase()}</div>
+                               <div className="overflow-hidden">
+                                 <h5 className="font-bold text-slate-900 leading-tight truncate group-hover:text-indigo-600 transition-colors">{f.name}</h5>
+                                 <p className="text-xs font-medium text-slate-500 truncate">{f.role}</p>
                                </div>
                              </div>
-                             <SoftBadge color="blue" className="text-xs">{f.rate || f.cost}€/j</SoftBadge>
+                             <SoftBadge color="blue" className="text-xs bg-sky-50 text-sky-700 border-sky-200 shrink-0">{f.rate || f.cost}€/j</SoftBadge>
                            </div>
                            <div className="flex justify-between items-center">
-                             <div className="flex gap-1 text-yellow-400">
+                             <div className="flex gap-1 text-amber-500">
                                {[1,2,3,4,5].map(star => <Star key={star} size={14} fill={star <= (f.note || f.rating) ? "currentColor" : "none"} strokeWidth={1.5} />)}
                              </div>
-                             <button className="text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors" onClick={() => setSelectedProfile({ ...f, type: 'freelance' })}>Voir Profil</button>
+                             <button className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition-colors" onClick={() => setSelectedProfile({ ...f, type: 'freelance' })}>Voir Profil</button>
                            </div>
                          </div>
                        ))}
-                       {freelances.filter(f => f.pipeline === col).length === 0 && <p className="text-center text-sm font-medium text-gray-400 p-4 border-[1.5px] border-gray-200 border-dashed rounded-xl">Glissez des profils ici</p>}
+                       {freelances.filter(f => f.pipeline === col).length === 0 && <div className="text-center p-6 border border-slate-200 border-dashed rounded-xl bg-white/50"><p className="text-sm font-medium text-slate-400">Glissez des profils ici</p></div>}
                      </div>
                    </div>
                  ))}
@@ -817,46 +829,46 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
 
            {activeTab === 'contrats_finis' && (
              <div className="space-y-8 animate-in slide-in-from-right-10 duration-500">
-                <h3 className="text-3xl font-bold tracking-tight text-gray-900">Contrats Terminés (Historique)</h3>
+                <h3 className="text-3xl font-bold tracking-tight text-slate-900">Contrats Terminés (Historique)</h3>
                 <div className="space-y-6">
                   {finishedContracts.map(fc => (
-                    <SoftCard key={fc.id} color="white">
-                      <div className="border-b-[1.5px] border-gray-200 pb-6 mb-6">
+                    <SoftCard key={fc.id} className="bg-white border border-slate-200 shadow-sm">
+                      <div className="border-b border-slate-200 pb-6 mb-6">
                          <div className="flex justify-between items-start flex-wrap gap-4">
                             <div>
-                               <h4 className="text-2xl font-bold text-gray-900">{fc.title}</h4>
-                               <p className="font-medium text-gray-500 mt-1">{fc.company} • Budget: {fc.budget}</p>
+                               <h4 className="text-2xl font-bold text-slate-900">{fc.title}</h4>
+                               <p className="font-medium text-slate-500 mt-1">{fc.company} • Budget: <span className="font-bold text-slate-700">{fc.budget}</span></p>
                             </div>
-                            <SoftBadge color="blue">Terminé le 12 Mars 2026</SoftBadge>
+                            <SoftBadge color="blue" className="bg-indigo-50 text-indigo-700 border-indigo-200">Terminé le 12 Mars 2026</SoftBadge>
                          </div>
                          <div className="mt-4 flex gap-2 flex-wrap">
                            {fc.freelances.map(name => (
-                             <SoftBadge key={name} color="purple">{name} (Freelance)</SoftBadge>
+                             <SoftBadge key={name} color="purple" className="bg-purple-50 text-purple-700 border-purple-200">{name} (Freelance)</SoftBadge>
                            ))}
                          </div>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Company Review */}
-                        <div className="bg-green-50/50 p-5 rounded-2xl border-[1.5px] border-green-200">
+                        <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200">
                            <div className="flex justify-between items-center mb-4">
-                             <p className="font-semibold text-sm text-green-800">Avis de l'Entreprise</p>
-                             <div className="flex gap-1 text-yellow-500">
+                             <p className="font-bold text-sm text-slate-700">Avis de l'Entreprise</p>
+                             <div className="flex gap-1 text-amber-500">
                                {[...Array(5)].map((_, i) => <Star key={i} fill={i < fc.companyReview.rating ? 'currentColor' : 'none'} size={16} />)}
                              </div>
                            </div>
-                           <p className="font-medium text-gray-700 italic">"{fc.companyReview.comment}"</p>
+                           <p className="font-medium text-slate-600 italic">"{fc.companyReview.comment}"</p>
                         </div>
                         
                         {/* Freelance Review */}
-                        <div className="bg-purple-50/50 p-5 rounded-2xl border-[1.5px] border-purple-200">
+                        <div className="bg-slate-50 p-5 rounded-2xl border border-slate-200">
                            <div className="flex justify-between items-center mb-4">
-                             <p className="font-semibold text-sm text-purple-800">Avis des Freelances</p>
-                             <div className="flex gap-1 text-yellow-500">
+                             <p className="font-bold text-sm text-slate-700">Avis des Freelances</p>
+                             <div className="flex gap-1 text-amber-500">
                                {[...Array(5)].map((_, i) => <Star key={i} fill={i < fc.freelanceReview.rating ? 'currentColor' : 'none'} size={16} />)}
                              </div>
                            </div>
-                           <p className="font-medium text-gray-700 italic">"{fc.freelanceReview.comment}"</p>
+                           <p className="font-medium text-slate-600 italic">"{fc.freelanceReview.comment}"</p>
                         </div>
                       </div>
                     </SoftCard>
@@ -867,27 +879,27 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
 
            {activeTab === 'search_freelances' && (
              <div className="space-y-8 animate-in slide-in-from-right-10 duration-500">
-               <h3 className="text-3xl font-bold tracking-tight text-gray-900">Rechercher des Talents</h3>
+               <h3 className="text-3xl font-bold tracking-tight text-slate-900">Rechercher des Talents</h3>
                <SoftInput placeholder="Nom, métier, techno..." icon={Search} />
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
                  {genericFreelances.length > 0 ? genericFreelances.map(f => (
-                   <SoftCard key={f.id} className="text-center group overflow-hidden hover:border-gray-300">
+                   <SoftCard key={f.id} className="text-center group overflow-hidden border border-slate-200 hover:border-indigo-200 transition-all shadow-sm">
                      <div 
-                        className="cursor-pointer group-hover:bg-gray-50 -mx-6 -mt-6 p-6 transition-colors" 
+                        className="cursor-pointer group-hover:bg-slate-50 -mx-6 -mt-6 p-6 transition-colors" 
                         onClick={() => setSelectedProfile({ ...f, type: 'freelance' })}
                      >
-                       <div className="w-16 h-16 mx-auto border-[1.5px] border-gray-200 rounded-full overflow-hidden bg-yellow-50/50 mb-3 group-hover:scale-105 transition-transform duration-300">
+                       <div className="w-16 h-16 mx-auto border border-slate-200 rounded-full overflow-hidden bg-slate-50 mb-3 group-hover:scale-105 transition-transform duration-300 shadow-sm">
                          <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${f.avatar}`} alt={f.name} className="w-full h-full object-cover" />
                        </div>
-                       <h4 className="font-bold text-lg text-gray-900">{f.name}</h4>
-                       <p className="font-medium text-gray-500 text-xs mt-1">Clic pour voir profil</p>
+                       <h4 className="font-bold text-lg text-slate-900 group-hover:text-indigo-600 transition-colors">{f.name}</h4>
+                       <p className="font-medium text-slate-500 text-xs mt-1">Clic pour voir profil</p>
                      </div>
-                     <SoftButton className="w-full mt-4 py-2.5 text-xs rounded-lg border-gray-200" variant="white" onClick={() => handleAddGenericToVivier(f)}>
-                       + Ajouter au vivier
+                     <SoftButton className="w-full mt-4 py-2.5 text-xs rounded-lg border-slate-200" variant="white" onClick={() => handleAddGenericToVivier(f)}>
+                       <Plus size={14} className="mr-2 inline" strokeWidth={2} /> Ajouter au vivier
                      </SoftButton>
                    </SoftCard>
                  )) : (
-                   <p className="font-medium text-gray-500 italic col-span-3 text-center">Aucun nouveau talent ne correspond à la recherche.</p>
+                   <p className="font-medium text-slate-500 italic col-span-3 text-center bg-slate-50 border border-slate-200 border-dashed rounded-xl p-8">Aucun nouveau talent ne correspond à la recherche.</p>
                  )}
                </div>
              </div>
@@ -895,24 +907,24 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
 
            {activeTab === 'search_companies' && (
              <div className="space-y-8 animate-in slide-in-from-right-10 duration-500">
-               <h3 className="text-3xl font-bold tracking-tight text-gray-900">Annuaire des Entreprises</h3>
+               <h3 className="text-3xl font-bold tracking-tight text-slate-900">Annuaire des Entreprises</h3>
                <SoftInput placeholder="Rechercher partenaires (nom, secteur)..." icon={Search} />
                <div className="space-y-6 pt-4">
                  {companies.map(c => {
                    const opps = getCompanyOpportunities(c.name).length;
                    return (
-                     <SoftCard key={c.id} className="cursor-pointer hover:bg-blue-50/50 hover:border-blue-200 hover:shadow-md transition-all group" onClick={() => setSelectedProfile({ ...c, type: 'company', matches: opps })}>
+                     <SoftCard key={c.id} className="cursor-pointer hover:border-indigo-200 hover:shadow-sm border border-slate-200 bg-white transition-all group" onClick={() => setSelectedProfile({ ...c, type: 'company', matches: opps })}>
                        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                          <div className="flex items-center gap-6 w-full md:w-auto">
-                           <div className="w-16 h-16 border-[1.5px] border-gray-200 rounded-2xl overflow-hidden bg-white shadow-sm shrink-0 group-hover:scale-105 transition-transform duration-300">
+                           <div className="w-16 h-16 border border-slate-200 rounded-2xl overflow-hidden bg-slate-50 shadow-sm shrink-0 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                              <img src={`https://api.dicebear.com/7.x/shapes/svg?seed=${c.avatar}`} alt={c.name} />
                            </div>
                            <div>
-                             <h4 className="font-bold text-2xl text-gray-900 leading-tight">{c.name}</h4>
-                             <p className="font-medium text-gray-500 text-sm">{c.sector}</p>
+                             <h4 className="font-bold text-2xl text-slate-900 leading-tight group-hover:text-indigo-600 transition-colors">{c.name}</h4>
+                             <p className="font-medium text-slate-500 text-sm mt-1">{c.sector}</p>
                            </div>
                          </div>
-                         <SoftBadge color="blue">{opps} Offre{opps > 1 ? 's' : ''} en cours (Clic pour voir)</SoftBadge>
+                         <SoftBadge color="blue" className="bg-sky-50 text-sky-700 border-sky-200 shrink-0">{opps} Offre{opps > 1 ? 's' : ''} en cours (Clic pour voir)</SoftBadge>
                        </div>
                      </SoftCard>
                    );
@@ -923,39 +935,40 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
 
            {activeTab === 'team_builder' && (
              <div className="space-y-8 animate-in slide-in-from-bottom-10 duration-500">
-               <div className="flex justify-between items-center bg-gray-900 text-white p-6 md:p-8 rounded-3xl border border-gray-800 shadow-xl relative overflow-hidden">
+               <div className="flex justify-between items-center bg-indigo-950 text-white p-6 md:p-8 rounded-3xl shadow-lg relative overflow-hidden shrink-0">
+                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 to-slate-900 mix-blend-multiply pointer-events-none" />
                  <div className="relative z-10 w-full">
                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Team Builder 🛠</h3>
-                   <div className="flex justify-between w-full mt-3 items-end">
-                     <p className="font-medium text-gray-400 text-sm md:text-base">Budget Alloué : <span className="text-white font-bold">{teamBuilder.totalBudget} €</span></p>
-                     <p className="font-semibold text-yellow-500 bg-yellow-500/10 px-4 py-2 rounded-xl text-sm border-[1.5px] border-yellow-500/30">
+                   <div className="flex justify-between w-full mt-4 items-end flex-wrap gap-4">
+                     <p className="font-medium text-indigo-200 text-sm md:text-base">Budget Alloué : <span className="text-white font-bold tracking-wide text-lg">{teamBuilder.totalBudget} €</span></p>
+                     <p className="font-semibold text-amber-500 bg-amber-500/10 px-4 py-2 rounded-xl text-sm border border-amber-500/30 shadow-sm shrink-0">
                        Talents requis : {teamBuilder.assignedFreelances.length} / {teamBuilder.requiredFreelances}
                      </p>
                    </div>
                  </div>
-                 <Calculator size={100} className="absolute right-10 opacity-[0.05] hidden md:block" />
+                 <Calculator size={100} className="absolute right-10 opacity-[0.05] hidden md:block text-indigo-100" />
                </div>
 
                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                 <SoftCard title="Sélection depuis le Vivier" color="purple">
-                   <div className="space-y-4">
+                 <SoftCard title="Sélection depuis le Vivier" color="purple" className="bg-slate-50 border border-slate-200 h-full flex flex-col">
+                   <div className="space-y-4 overflow-y-auto max-h-[500px] flex-1">
                      {freelances.map(f => {
                        const isAdded = teamBuilder.assignedFreelances.find(x => x.id === f.id);
                        const isBusy = f.availability === 'busy';
                        return (
-                         <div key={f.id} className={`border-[1.5px] border-gray-200 rounded-2xl p-4 flex justify-between items-center transition-colors ${isAdded ? 'bg-gray-50 opacity-60' : 'bg-white hover:border-purple-200'} ${isBusy ? 'bg-red-50/50 opacity-60 grayscale' : ''}`}>
+                         <div key={f.id} className={`border border-slate-200 rounded-2xl p-4 flex justify-between items-center transition-all ${isAdded ? 'bg-indigo-50/50 opacity-60 border-indigo-200' : 'bg-white hover:border-indigo-300 hover:shadow-sm'} ${isBusy ? 'bg-slate-50 opacity-50 grayscale' : ''}`}>
                            <div className="flex items-center gap-3">
-                             <div className="w-10 h-10 border-[1.5px] border-gray-200 rounded-full overflow-hidden shrink-0 bg-white"><img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${f.avatar}`} /></div>
-                             <div>
-                               <p className="font-bold text-gray-900 truncate max-w-[120px] md:max-w-none">{f.name}</p>
-                               <p className="text-[11px] font-medium text-gray-500 truncate">{f.role} • <span className="text-gray-900 font-semibold">{f.cost}€</span></p>
-                               {isBusy && <p className="text-[10px] text-red-500 font-semibold uppercase mt-0.5">En Mission</p>}
+                             <div className="w-10 h-10 border border-slate-200 rounded-full overflow-hidden shrink-0 bg-white flex items-center justify-center font-bold text-slate-500 shadow-sm"><img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${f.avatar}`} /></div>
+                             <div className="overflow-hidden">
+                               <p className={`font-bold truncate max-w-[120px] md:max-w-[200px] ${isAdded ? 'text-indigo-900' : 'text-slate-900'}`}>{f.name}</p>
+                               <p className="text-[11px] font-medium text-slate-500 truncate">{f.role} • <span className="text-slate-700 font-bold">{f.cost}€</span></p>
+                               {isBusy && <p className="text-[10px] text-rose-500 font-semibold uppercase mt-0.5 tracking-wide">En Mission</p>}
                              </div>
                            </div>
                            {!isAdded ? (
-                             <button onClick={() => addToTeam(f)} className="bg-purple-100 text-purple-700 border-[1.5px] border-purple-200 w-8 h-8 flex items-center justify-center rounded-lg font-bold hover:bg-purple-200 transition-colors shrink-0" disabled={isBusy}><Plus size={16} /></button>
+                             <button onClick={() => addToTeam(f)} className="bg-white text-indigo-600 border border-slate-200 w-9 h-9 flex items-center justify-center rounded-xl font-bold hover:bg-indigo-50 hover:border-indigo-200 shadow-sm transition-all shrink-0 active:scale-95" disabled={isBusy}><Plus size={16} strokeWidth={2.5}/></button>
                            ) : (
-                             <button onClick={() => removeFromTeam(f.id)} className="bg-red-50 text-red-600 border-[1.5px] border-red-200 w-8 h-8 flex items-center justify-center rounded-lg font-bold hover:bg-red-100 transition-colors shrink-0"><Minus size={16} /></button>
+                             <button onClick={() => removeFromTeam(f.id)} className="bg-rose-50 text-rose-600 border border-rose-200 w-9 h-9 flex items-center justify-center rounded-xl font-bold hover:bg-rose-100 shadow-sm transition-all shrink-0 active:scale-95"><Minus size={16} strokeWidth={2.5} /></button>
                            )}
                          </div>
                        );
@@ -963,36 +976,41 @@ export const ApporteurDashboard = ({ user, onLogout }) => {
                    </div>
                  </SoftCard>
 
-                 <SoftCard title="Équipe Constituée & Deal" color="yellow">
+                 <SoftCard title="Équipe Constituée & Deal" color="yellow" className="bg-slate-50 border border-slate-200 flex flex-col h-full">
                    <div className="space-y-6 h-full flex flex-col">
                      {teamBuilder.assignedFreelances.length === 0 ? (
-                       <p className="font-medium text-gray-400 p-8 text-center border-[1.5px] border-gray-200 border-dashed rounded-2xl">Ajoutez des freelances à l'équipe depuis votre vivier pour commencer la simulation de commission.</p>
+                       <div className="flex-1 flex items-center justify-center p-8 bg-white border border-slate-200 border-dashed rounded-2xl text-center">
+                          <p className="font-medium text-slate-400">Ajoutez des freelances à l'équipe depuis votre vivier pour commencer la simulation de commission.</p>
+                       </div>
                      ) : (
-                       <div className="space-y-4 flex-1">
+                       <div className="space-y-4 flex-1 overflow-y-auto max-h-[350px]">
                          {teamBuilder.assignedFreelances.map(f => (
-                           <div key={`team-${f.id}`} className="flex justify-between items-center border-b-[1.5px] border-gray-100 pb-3">
-                             <span className="font-semibold text-gray-900 truncate pr-4">{f.name}</span>
-                             <span className="font-bold text-gray-700 shrink-0">{f.cost} € <span className="text-xs font-medium text-gray-400">Net/j</span></span>
+                           <div key={`team-${f.id}`} className="flex justify-between items-center border border-indigo-100 bg-white p-4 rounded-xl shadow-sm">
+                             <div className="flex items-center gap-3 overflow-hidden">
+                                <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-200 shrink-0"><img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${f.avatar}`} /></div>
+                                <span className="font-semibold text-slate-900 truncate pr-4">{f.name}</span>
+                             </div>
+                             <span className="font-bold text-slate-700 shrink-0">{f.cost} € <span className="text-[10px] font-medium text-slate-400 uppercase tracking-widest">Net/j</span></span>
                            </div>
                          ))}
                        </div>
                      )}
 
-                     <div className="pt-6 border-t-[1.5px] border-gray-200 mt-auto">
-                       <div className="flex justify-between items-center text-lg mb-6">
-                         <span className="font-semibold text-gray-500">Votre Commission</span>
-                         <span className={`font-bold px-4 py-2 rounded-xl transition-colors text-xl ${calculateCommission() >= 0 ? 'text-green-700 bg-green-50 border-[1.5px] border-green-200' : 'text-red-700 bg-red-50 border-[1.5px] border-red-200'}`}>
-                           {calculateCommission()} €
+                     <div className="pt-6 border-t border-slate-200 mt-auto shrink-0 bg-slate-50 pb-2">
+                       <div className="flex justify-between items-center mb-6">
+                         <span className="font-semibold text-slate-600">Marge Prévue (Commission)</span>
+                         <span className={`font-bold px-4 py-2.5 rounded-xl shadow-sm transition-colors text-lg tracking-wide ${calculateCommission() >= 0 ? 'text-emerald-700 bg-emerald-50 border border-emerald-200' : 'text-rose-700 bg-rose-50 border border-rose-200'}`}>
+                           {calculateCommission() > 0 ? '+' : ''}{calculateCommission()} €
                          </span>
                        </div>
 
                        <SoftButton 
                           className="w-full text-base py-4 rounded-xl shadow-sm" 
-                          variant={teamBuilder.assignedFreelances.length !== teamBuilder.requiredFreelances || calculateCommission() < 0 ? 'black' : 'yellow'} 
+                          variant={teamBuilder.assignedFreelances.length !== teamBuilder.requiredFreelances || calculateCommission() < 0 ? 'white' : 'blue'} 
                           disabled={teamBuilder.assignedFreelances.length !== teamBuilder.requiredFreelances || calculateCommission() < 0} 
                           onClick={handleSendContracts}
                         >
-                         <Send size={18} className="mr-2 inline" /> Valider l'équipe et envoyer les contrats
+                         <Send size={18} className="mr-2 inline" strokeWidth={2} /> Valider l'équipe et envoyer les contrats
                        </SoftButton>
                      </div>
                    </div>
