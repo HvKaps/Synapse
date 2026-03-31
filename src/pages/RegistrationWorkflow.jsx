@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Zap, UserCheck, Target, Award, BookOpen, Globe, GitBranch, FileUp, FileText, X } from 'lucide-react';
+import { Zap, UserCheck, Target, Award, BookOpen, Globe, GitBranch, FileUp, FileText, X, Briefcase } from 'lucide-react';
 import { SoftButton } from '../components/ui/SoftButton';
 import { SoftCard } from '../components/ui/SoftCard';
 import { SoftInput } from '../components/ui/SoftInput';
@@ -246,7 +246,15 @@ export const RegistrationWorkflow = ({ selectedRole, onComplete, onCancel }) => 
           )}
 
           <div className="pt-8 w-full flex justify-end">
-             <SoftButton type="submit" variant="yellow" className="py-3.5 px-8 text-base">
+             <SoftButton 
+               type="button" 
+               variant="yellow" 
+               className="py-3.5 px-8 text-base"
+               onClick={(e) => {
+                 e.preventDefault();
+                 onComplete({...formData, role: selectedRole});
+               }}
+             >
                 Finaliser l'Inscription <Zap size={18} className="ml-1" fill="currentColor" strokeWidth={0} />
              </SoftButton>
           </div>

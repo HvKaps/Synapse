@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Zap, LayoutDashboard, Component, Users, FileText, Wallet, LogOut, Target, Briefcase, ChevronRight, Calculator, Send, Search, Building, Star, CheckCircle, X, MessageSquare, Globe, GitBranch, FileUp, Inbox, Link, BarChart, Activity, ShieldCheck, Plus, ChevronDown, Check } from 'lucide-react';
+import { Zap, LayoutDashboard, Component, Users, FileText, Wallet, LogOut, Target, Briefcase, ChevronRight, Calculator, Send, Search, Building, Star, CheckCircle, X, MessageSquare, Globe, GitBranch, FileUp, Inbox, Link, BarChart, Activity, ShieldCheck, Plus, Minus, ChevronDown, Check } from 'lucide-react';
 import { useAlert } from '../context/AlertContext';
 import { SoftButton } from '../components/ui/SoftButton';
 import { SoftCard } from '../components/ui/SoftCard';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Rocket, ShieldCheck, Star, Heart, Briefcase, Users, UserCheck, CheckCircle, Mic, GitBranch, Mail } from 'lucide-react';
+import { Zap, Rocket, ShieldCheck, Star, Heart, Briefcase, Users, UserCheck, CheckCircle, Check, Crown, Mic, GitBranch, Mail } from 'lucide-react';
 import { SoftButton } from '../components/ui/SoftButton';
 import { SoftCard } from '../components/ui/SoftCard';
 import { SoftBadge } from '../components/ui/SoftBadge';
@@ -184,6 +184,59 @@ export const LandingPage = ({ onStart }) => {
                <Mic size={100} strokeWidth={1.5} className="text-indigo-300" />
             </div>
          </div>
+      </section>
+
+      <section className="px-6 py-24 max-w-7xl mx-auto space-y-16">
+        <div className="text-center space-y-4">
+           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 text-purple-700 font-bold text-sm mb-4 border border-purple-100"><Crown size={16} /> Abonnement Premium</div>
+           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">Débloquez votre plein potentiel.</h2>
+           <p className="text-lg font-medium text-slate-600">Deux offres simples. Sécurisez les meilleurs deals du réseau.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-center">
+          {/* Gratuit */}
+          <div className="bg-slate-900 text-white p-10 rounded-3xl shadow-xl relative overflow-hidden border border-slate-800">
+             <div className="flex justify-between items-center mb-10">
+               <h3 className="text-2xl font-bold">Gratuit</h3>
+               <span className="bg-slate-800 text-slate-300 font-semibold text-xs px-3 py-1.5 rounded-full">Débutant</span>
+             </div>
+             
+             <ul className="space-y-5 font-medium text-slate-300 mb-12">
+               <li className="flex items-center gap-3"><Check className="text-purple-400 shrink-0" size={20} strokeWidth={2.5}/> Accès limité aux opportunités</li>
+               <li className="flex items-center gap-3"><Check className="text-purple-400 shrink-0" size={20} strokeWidth={2.5}/> Suivi basique</li>
+               <li className="flex items-center gap-3"><Check className="text-purple-400 shrink-0" size={20} strokeWidth={2.5}/> Délai de visibilité sur offres</li>
+             </ul>
+             
+             <SoftButton onClick={() => onStart('login')} variant="white" className="w-full py-4 rounded-xl font-bold text-slate-900">
+                Rester en Gratuit
+             </SoftButton>
+          </div>
+
+          {/* Premium */}
+          <div className="bg-white border-2 border-purple-600 p-10 rounded-3xl shadow-2xl relative overflow-hidden transform md:scale-105 z-10">
+             <div className="absolute top-0 inset-x-0 h-2 bg-purple-600" />
+             <div className="flex justify-between items-center mb-10 mt-1">
+               <h3 className="text-2xl font-bold text-purple-950 flex items-center gap-2">Premium</h3>
+               <span className="bg-yellow-400 text-yellow-950 font-black text-[10px] px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Recommandé</span>
+             </div>
+
+             <ul className="space-y-5 font-medium text-slate-600 mb-8">
+               <li className="flex items-center gap-3"><Check className="text-purple-500 shrink-0" strokeWidth={3} size={20} /> <span className="font-bold text-slate-900">Accès anticipé</span> aux annonces</li>
+               <li className="flex items-center gap-3"><Check className="text-purple-500 shrink-0" strokeWidth={3} size={20} /> <span className="font-bold text-slate-900">Suivi avancé</span> des opportunités</li>
+               <li className="flex items-center gap-3"><Check className="text-purple-500 shrink-0" strokeWidth={3} size={20} /> <span className="font-bold text-slate-900">Priorité</span> sur recommandations</li>
+               <li className="flex items-center gap-3"><Check className="text-purple-500 shrink-0" strokeWidth={3} size={20} /> <span className="font-bold text-slate-900">Statistiques</span> détaillées</li>
+               <li className="flex items-center gap-3"><Check className="text-purple-500 shrink-0" strokeWidth={3} size={20} /> <span className="font-bold text-slate-900">Badge</span> de crédibilité</li>
+             </ul>
+             
+             <div className="border-t border-slate-100 pt-6 mb-8 text-center bg-purple-50/60 -mx-10 px-10 pb-2">
+                <span className="text-5xl font-black text-purple-600 tracking-tight">29€<span className="text-xl text-purple-600/60 font-bold">/mois</span></span>
+             </div>
+             
+             <SoftButton onClick={() => onStart('login')} variant="purple" className="w-full py-4 rounded-xl text-lg font-bold shadow-purple-500/25 shadow-lg">
+                Passer en Premium
+             </SoftButton>
+          </div>
+        </div>
       </section>
 
       <section className="px-6 py-24 text-center space-y-10">

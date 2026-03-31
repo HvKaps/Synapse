@@ -32,16 +32,16 @@ export const AlertProvider = ({ children }) => {
             key={alert.id} 
             className={`
               animate-in slide-in-from-right-8 fade-in duration-300
-              pointer-events-auto flex items-start gap-4 p-5 rounded-2xl border-[1.5px] shadow-sm
-              ${alert.type === 'success' ? 'bg-green-50 border-green-200 text-green-800' : ''}
-              ${alert.type === 'error' ? 'bg-red-50 border-red-200 text-red-800' : ''}
-              ${alert.type === 'info' ? 'bg-blue-50 border-blue-200 text-blue-800' : ''}
+              pointer-events-auto flex items-start gap-4 p-5 rounded-2xl border shadow-md
+              ${alert.type === 'success' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : ''}
+              ${alert.type === 'error' ? 'bg-rose-50 border-rose-200 text-rose-800' : ''}
+              ${alert.type === 'info' ? 'bg-indigo-50 border-indigo-200 text-indigo-800' : ''}
             `}
           >
             <div className="shrink-0 mt-0.5">
-              {alert.type === 'success' && <CheckCircle size={24} strokeWidth={2} className="text-green-600" />}
-              {alert.type === 'error' && <AlertTriangle size={24} strokeWidth={2} className="text-red-600" />}
-              {alert.type === 'info' && <Bell size={24} strokeWidth={2} className="text-blue-600" />}
+              {alert.type === 'success' && <CheckCircle size={24} strokeWidth={2} className="text-emerald-600" />}
+              {alert.type === 'error' && <AlertTriangle size={24} strokeWidth={2} className="text-rose-600" />}
+              {alert.type === 'info' && <Bell size={24} strokeWidth={2} className="text-indigo-600" />}
             </div>
             <div className="flex-1">
               <p className="font-semibold text-sm leading-snug">{alert.message}</p>

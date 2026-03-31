@@ -98,9 +98,9 @@ const AppContent = () => {
     <>
       {showPopup && (
         <div className="fixed top-10 right-10 z-[999] animate-in slide-in-from-top-5 duration-500">
-          <div className="bg-[#81C784] border-[4px] border-black rounded-[20px] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-5 flex items-center gap-4">
-            <CheckCircle size={28} strokeWidth={3} className="text-black" />
-            <span className="font-black uppercase text-lg italic tracking-tighter">Votre compte a bien été configuré !</span>
+          <div className="bg-emerald-50 border border-emerald-200 rounded-2xl shadow-md p-5 flex items-center gap-4">
+            <CheckCircle size={28} strokeWidth={2} className="text-emerald-600" />
+            <span className="font-semibold text-emerald-800 text-base">Votre compte a bien été configuré !</span>
           </div>
         </div>
       )}

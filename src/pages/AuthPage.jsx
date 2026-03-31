@@ -20,7 +20,7 @@ export const AuthPage = ({ onBack, onCompleteAuth }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(selectedRole && email && password) {
+    if(selectedRole) {
       onCompleteAuth(selectedRole, authMode === 'login');
     }
   };
@@ -65,7 +65,7 @@ export const AuthPage = ({ onBack, onCompleteAuth }) => {
         <SoftCard title={step === 1 ? "Quel rôle voulez-vous tester ?" : (authMode === 'login' ? "Identifiants de test" : "Création de compte")} className="relative">
           {step === 1 ? (
             <div className="space-y-4">
-              {roles.map(r => (
+              {roles.filter(r => authMode === 'login' || r.id !== 'admin').map(r => (
                 <button 
                   key={r.id} type="button" onClick={() => setSelectedRole(r.id)}
                   className={`w-full border p-5 rounded-2xl flex items-center justify-between transition-all group ${selectedRole === r.id ? 'bg-indigo-50/50 border-indigo-500 ring-1 ring-indigo-500 shadow-sm' : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50 shadow-sm'}`}

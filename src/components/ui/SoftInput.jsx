@@ -8,12 +8,12 @@ export const SoftInput = ({ label, icon: Icon, type = "text", placeholder, value
     </label>
     {rows > 1 ? (
       <textarea 
-        required={required} rows={rows} value={value} onChange={onChange} placeholder={placeholder}
+        rows={rows} value={value} onChange={onChange} placeholder={placeholder}
         className="w-full border border-slate-300 rounded-lg p-3 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-shadow placeholder:text-slate-400 resize-none bg-white shadow-sm"
       />
     ) : (
       <input 
-        required={required} type={type} value={value} onChange={onChange} placeholder={placeholder}
+        type={type} value={value} onChange={onChange} placeholder={placeholder}
         className="w-full border border-slate-300 rounded-lg p-3 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-shadow placeholder:text-slate-400 bg-white shadow-sm"
       />
     )}
